@@ -1,0 +1,21 @@
+<div class="wall">
+</div>
+<div class="contents">
+    <div>
+        <h2>订单异常备注</h2>
+    </div>
+    <div>
+        <div class="qrCodeDiv">
+            <label for="#qrCode">付款二维码</label>
+            <input type="text" id="qrCode" [(ngModel)]="qrCodeValue" disabled>
+        </div>
+        <div class="textareaDiv">
+            <p>备注：</p>
+            <textarea  [(ngModel)]="reMarkValue"></textarea>
+        </div>
+    </div>
+    <div class="btnDiv">
+        <button (click)="cancels()">取消</button>
+        <button (click)="according()">确定</button>
+    </div>
+</div>

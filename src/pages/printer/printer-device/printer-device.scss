@@ -1,0 +1,23 @@
+ page-printer-device {
+
+   .content {
+     background-color: #f2f2f2;
+   }
+
+   .item-block {
+     margin-bottom: 8px;
+   }
+
+   .item-block .item-inner {
+     border: none !important;
+   }
+
+   .printer-addr {
+     margin-top: -8px;
+     border-top: 1px solid #EFEFEF !important;
+   }
+
+   .printer-addr .note {
+     font-size: 14px;
+   }
+}

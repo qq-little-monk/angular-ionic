@@ -1,0 +1,40 @@
+wo-order-btn {
+  .operation-btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .button {
+      margin: 0;
+      height: auto;
+      padding-left: 0;
+      padding-right: 0;
+      min-height: auto;
+    }
+
+    .add {
+      // padding-left:r(30px);
+    }
+
+    .sub {
+      // padding-right:r(30px);
+    }
+
+    .num {
+      font-size: r(30px);
+    //   color: #333;
+    //   background: #f5f9fc;
+      width: r(60px);
+    //   display: block;
+    //   padding: r(10px) 0;
+    //   overflow: hidden;
+      text-align: center;
+    //   margin: 0 r(10px);
+    //   border: r(1px) solid #eee;
+    }
+
+    ion-icon {
+      font-size: r(50px);
+    }
+  }
+}

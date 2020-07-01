@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item class="header-item" no-lines>
+      <span class="text-size-2 ">{{payMent?.payName}}</span>
+      <span class="text-size-2 " *ngIf="needPrice>0">还需收:￥{{needPrice}}</span><br>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div tappable  style="height: 15%;background-color: #fff;" class="keyboard-header jz-center" (click)="foucouce()">
+    <span class="jz-center"
+      [ngClass]="{'btn-foucouce':payPrice.isClear,'btn-selected': true}">{{payPrice.number}}</span>
+  </div>
+  <div style="height: 15%;background-color: #fff;">
+    <ion-row class="budget-row" *ngIf="payMent?.payCode=='RB'">
+      <ion-col col-4 *ngFor="let item of budgetList">
+        <button ion-button clear class="budget" (click)="setPrice(item)">
+          {{item}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div style="height: 70%;">
+    <number-keyboard [number]="payPrice" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+</ion-content>

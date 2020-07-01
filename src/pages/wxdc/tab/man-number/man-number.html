@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    {{tab?.tableName}}
+    <span *ngIf="teaAmt.number*man.number>0">（总茶位费：￥{{utilProvider.accMul(teaAmt.number,man.number)}}）</span>
+  </ion-navbar>
+
+
+  <!-- <button ion-item>
+    <ion-label class="font-size16">导购员</ion-label>
+    <ion-note item-end>{{staff}}</ion-note>
+  </button> -->
+  <!-- <ion-item> -->
+  <!-- <ion-label fixed>备注:</ion-label>
+    <ion-input type="text" value="{{remark}}"></ion-input> -->
+  <!-- <ion-input type="text" value=""></ion-input> -->
+  <!-- <ion-label class="font-size16">备注:</ion-label>
+    <ion-note item-end>{{remake}}</ion-note> -->
+  <!-- </ion-item> -->
+
+</ion-header>
+<ion-content>
+  <div style="height: 30%;background-color: #fff;">
+    <ion-row>
+      <div col-5 tappable class="keyboard-header jz-center" (click)="foucouce(1)">
+        <span class="font-size16">茶位费：￥</span>
+        <span class="jz-center"
+          [ngClass]="{'btn-foucouce':teaAmt.isClear,'btn-selected': teaAmt.selected}">{{teaAmt?.number}}</span>
+      </div>
+      <div col-5 tappable class="keyboard-header jz-center" (click)="foucouce(2)">
+        <span class="font-size16">就餐人数：</span>
+        <span class="jz-center"
+          [ngClass]="{'btn-foucouce':man.isClear,'btn-selected': man.selected}">{{man?.number}}</span>
+      </div>
+    </ion-row>
+    <ion-row>
+      <div col-5 tappable class="keyboard-header jz-center" (click)="foucouce(3)">
+        <span class="font-size16">押金：</span>
+        <span class="jz-center"
+          [ngClass]="{'btn-foucouce':deposit.isClear,'btn-selected': deposit.selected}">{{deposit?.number}}</span>
+      </div>
+    </ion-row>
+  </div>
+  <div style="height: 70%;background-color: #fff;" *ngIf="teaAmt.selected">
+    <number-keyboard [number]="teaAmt" [isClear]='true' [maxLength]='5' (confirm)="confirm()" (refresh)="refresh()">
+    </number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="man.selected">
+    <number-keyboard [number]="man" [isClear]='true' [maxLength]='5' [havePoint]="fales" (confirm)="confirm()"
+      (refresh)="refresh()"></number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="deposit.selected">
+    <number-keyboard [number]="deposit" [isClear]='true' [maxLength]='5' [havePoint]="fales" (confirm)="confirm()"
+      (refresh)="refresh()"></number-keyboard>
+  </div>
+</ion-content>

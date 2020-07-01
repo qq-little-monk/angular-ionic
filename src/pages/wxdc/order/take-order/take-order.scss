@@ -1,0 +1,110 @@
+page-take-order {
+    .item-ios[detail-push] .item-inner, button.item-ios:not([detail-none]) .item-inner, a.item-ios:not([detail-none]) .item-inner {
+        background-image: none;
+        padding-right: 8px;
+        background-position: right 14px center;
+        background-position: right calc(14px + constant(safe-area-inset-right)) center;
+        background-position: right calc(14px + env(safe-area-inset-right)) center;
+        background-repeat: no-repeat;
+        background-size: 14px 14px;
+      }
+      .hander-button{
+          color: orange !important;
+          font-size: r(40px)!important;
+      }
+
+    ion-footer {
+        height: r(100px);
+        .footer-inner {
+            background: #191919;
+            flex: 1;
+            color: #fff;
+            padding: 0 r(20px);
+            height: 100%;
+            line-height: r(100px);
+            .first-span{
+                width: 40%;
+                position: absolute;
+            }
+            .end-div{
+                width: 100%;
+                text-align: right;
+                // position: absolute;
+                // top: 0px;
+            }
+        }
+        .button {
+            margin: 0 r(-2px) 0 0;
+            border-radius: 0;
+            border-style: none;
+            color: #191919;
+            height:  r(100px);
+            // font-size: 14px;
+            
+        }
+        .button-native {
+            line-height: initial !important;
+        }
+    }
+    .active{
+        background: #BBBBBB !important;
+    }
+    .div-button{
+        // background: #BBBBBb;
+        width: 100%;
+        button{
+            height: 100%;
+            width: 30%;
+            background: #ffffff;
+            clear: #000000;
+            // border-radius: 50%;
+        }
+    }
+    .item h1, .item h2, .item h3 {
+         margin-bottom: 0; 
+    }
+    .flag-divs{
+    position: absolute;
+    top: r(6px);
+    width: 100%;
+    left: 20%;
+    white-space:nowrap;
+    span{
+    background: #EFEFEF;
+    width: r(40px);
+    height: r(40px);
+    border-radius: 50%;
+    font-size: r(22px);
+    color: #0096ff;
+    margin-right: r(15px);
+    }
+    }
+   .fort{
+    background: #EFEFEF;
+    width: r(40px);
+    height: r(40px);
+    border-radius: 50%;
+    font-size: r(22px);
+    color: #0096ff;
+    margin-right: r(6px); 
+    // margin-bottom: r(20px);
+   }
+   .default-price{
+    //    color: #000;
+    text-align: right;
+   }
+   .div-canvas{
+       position: absolute;
+       z-index: 100;
+       background: none;
+       height: 100%;
+       width: 100%;
+   }
+   .temporaryDish{
+        width: 100%;
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: 0;
+   }
+}

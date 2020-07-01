@@ -1,0 +1,23 @@
+page-place-order-remark {
+    .content-ios, .scroll-content {
+        background: #fff;
+    }
+    ion-textarea {
+        background: #f8f8f8;
+        border-radius: 0.04rem;
+        font-size: r(28px);
+        height: r(300px);
+        // padding-left: 10px;
+        .text-input {
+            height: 100%;
+            padding: r(20px);
+        }
+    }
+    .submit {
+        margin-top: r(80px);
+    }
+
+    .bar-button {
+        color: #666;
+    }
+}

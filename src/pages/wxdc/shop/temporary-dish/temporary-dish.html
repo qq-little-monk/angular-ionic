@@ -1,0 +1,37 @@
+<div class="wall">
+</div>
+<div class="contents">
+    <ion-list>
+        <ion-list-header class="titles">
+          添加临时菜
+        </ion-list-header>
+        <ion-item>
+            <ion-label>*商品名称</ion-label>
+            <ion-input type="text" placeholder="输入商品名称" [(ngModel)]="commodityNameVal"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>*售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</ion-label>
+            <ion-input type="number" placeholder="输入商品售价" [(ngModel)]="commodityPriceVal"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>商品单位</ion-label>
+            <ion-select [(ngModel)]="nuitNameVal">
+                <ion-option *ngFor="let item of nuitName" [value]="item.unitName" [selected]="item.unitName == '例'">{{item.unitName}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>入&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厨</ion-label>
+            <ion-toggle  [(ngModel)]="toggleVal"></ion-toggle>
+          </ion-item>
+        <ion-item>
+            <ion-label>厨&nbsp;&nbsp;&nbsp;打&nbsp;&nbsp;&nbsp;机</ion-label>
+            <ion-select [(ngModel)]="selectVal" [ngClass]="{'disableSelect' : !toggleVal}" multiple="true">
+                <ion-option *ngFor="let item of kitchenPrinterList" [value]="item.id">{{item.name}}</ion-option>
+              </ion-select>
+        </ion-item>
+        <ion-item style="text-align: center;">
+            <button ion-button (click)="toCancel()">取消</button>
+            <button ion-button (click)="addTemporaryDish()">加入购物车</button>
+        </ion-item>
+      </ion-list>
+</div>

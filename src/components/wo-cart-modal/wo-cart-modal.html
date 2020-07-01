@@ -1,0 +1,49 @@
+<!-- 购物车详情 -->
+<div class="app-card-modal" [ngClass]="{'show': show}" *ngIf="show">
+  <div class="app-card-container">
+    <div class="drop" (click)="close()"></div>
+    <div class="app-card-inner">
+      <div class="app-card-header ion-align-items-center ion-justify-content-end">
+        <div class="flex ion-align-items-center" (click)="clearCart()">
+          <ion-icon name="woshanchu"></ion-icon>
+          清空购物车
+        </div>
+
+      </div>
+      <div class="app-card-content">
+       
+
+        <div class="cart-item ion-align-items-center" *ngFor="let item of appShopping.salesDetailList">
+          <div class="name">
+            <h3 class="ion-no-margin font-15 singleRow">{{item.itemName}}</h3>
+            <p class="ion-no-margin font-12 color-999 singleRow">测试2</p>
+          </div>
+         <div class="com-button">
+            <button>折扣</button>
+            <button>赠送</button>
+          </div> 
+          <div class="price">
+            <span class="p-r-5">￥123</span>
+            <del>￥321</del>
+          </div>
+          <div class="btns">
+            <!-- <order-btn [(ngModel)]="cart.itemQty" (add)="addCart($event,cart)" (sub)='subCart($event,cart)'>
+            </order-btn> -->
+            <order-btn></order-btn>
+          </div>
+        </div>
+        <!-- <div *ngIf="!showFooter" style="height:10px;"></div> -->
+        <!-- <div *ngIf="showFooter" class="app-card-footer"></div> -->
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="showCardOp" class="ion-padding container-footer">
+    <wo-cart-tab (placeOrder)="_placeOrder()"></wo-cart-tab>
+  </div>
+</div>
+<!-- <ion-footer *ngIf="show">
+  <div *ngIf="showCardOp" class="ion-padding container-footer">
+    <wo-cart-tab (placeOrder)="_placeOrder()"></wo-cart-tab>
+  </div>
+</ion-footer> -->

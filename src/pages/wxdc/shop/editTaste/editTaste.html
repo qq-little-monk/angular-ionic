@@ -1,0 +1,29 @@
+<!-- <div [ngClass]="{'isedilt': true}" class="isedilt"></div> -->
+<ion-content>
+
+  <!-- 做法，忌口 -->
+  <ion-list *ngFor="let attrGroup of dynamicAttrList">
+    <ion-list-header>
+      {{attrGroup?.attrGroupName}}
+    </ion-list-header>
+    <ion-row>
+      <ion-col col-3 *ngFor="let dynamic of attrGroup?.allAttr">
+        <button ion-button clear class="btn-pay-time" (click)="selectDynamic(attrGroup.attrGroupName,dynamic)"
+          [ngClass]="{'btn-selected': dynamic.isckeckd}">
+          {{dynamic['value']}}
+        </button>
+      </ion-col>
+    </ion-row>
+    <!-- <div class="spec">
+              <span class="active">微辣</span>
+              <span>中辣</span>
+              <span>特辣</span>
+            </div> -->
+  </ion-list>
+</ion-content>
+
+<ion-footer no-lines>
+  <div>
+    <button ion-button block round (click)="edit()">确定</button>
+  </div>
+</ion-footer>

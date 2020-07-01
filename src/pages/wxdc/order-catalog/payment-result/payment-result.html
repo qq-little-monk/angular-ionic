@@ -1,0 +1,23 @@
+<ion-content text-center>
+  <div class="success">
+    <img src="assets/images/public/success.png">
+  </div>
+  <h2>{{msg}}</h2>
+
+  <ion-grid class="ion-no-padding price ion-text-center">
+    <ion-row>
+      <ion-col col-12>
+        <span class="key">{{isPay?'实付':'需付'}}</span>
+        <span class="value">￥{{totalPrice}}</span>
+      </ion-col>
+      <ion-col col-12>
+        <span class="key">原价</span>
+
+        <span class="value">￥{{originalPrice}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <button ion-button round class="order-btn" (click)="back('home')">继续购物</button>
+  <button ion-button round outline class="order-btn" (click)="back('order')">查看订单</button>
+</ion-content>

@@ -1,0 +1,339 @@
+<!--
+  Generated template for the WoPlaceOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{appShopping.salesTable.virtualId?appShopping.salesTable.tableName+'('+appShopping.salesTable.virtualId+')':appShopping.salesTable.tableName}}
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="selectOperation()" class="hander-button">
+        <span style="font-size: 18px">操作</span>
+      </button>
+      
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select [(ngModel)]="gender" [interface]="popover">
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select>
+  </ion-item> -->
+  <!-- 正常菜品 -->
+  <ion-list>
+    <ng-container *ngFor="let salesDetail of normalItemList ">
+      <ion-item tappable class="cart-item" [ngClass]="{'active': checkedSalesDetail.id==salesDetail.id}"
+        *ngIf="salesDetail.salesQty>0&&(salesDetail.parentSpuId==null||salesDetail.parentSpuId=='')"
+        (click)="selectItem(salesDetail)" lines="none">
+        <ion-label>
+          <div>
+            <!-- <canvas class="div-canvas">{{canvas()}}
+          </canvas> -->
+            <ion-row no-padding no-margin style="width: 100%" class="h-center">
+              <div col-9 class="h-center">
+                <ion-row>
+                  <p class="fort jz-center" *ngIf="preferentialType(salesDetail)">{{preferentialType(salesDetail)}}</p>
+                  <p class="fort jz-center" *ngIf="salesDetail.isWaitingDish=='Y'">等</p>
+                  <!-- 退菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.salesQty<0">退</p>
+                  <!-- 加菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.itemStatus == '1'">加</p>
+                  <h2 class="jz-center">{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}
+                  </h2>
+                </ion-row>
+              </div>
+              <del col-3 class="p-r-5"
+                *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)|number:'1.0-2'}}
+              </del>
+            </ion-row>
+            <ion-row style="width: 100%" class="h-center">
+              <!-- <h2 col-6>{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}</h2> -->
+              <p col-4 class="">（单）：￥{{woShopService.getUnitSalesPrice(salesDetail)|number:'1.0-2'}}</p>
+              <p col-4 class="jz-center">数量：{{salesDetail.salesQty |number:'1.0-2'}}</p>
+              <p col-4 class="default-price" style="color: #000000">
+                ￥{{woShopService.getSalesAmt(salesDetail)|number:'1.0-2'}}
+                <!-- <br /><del class="p-r-5"
+                *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)}}
+              </del> -->
+              </p>
+            </ion-row>
+            <!-- <div>
+            <span class="default-price">￥{{salesDetail.retailPrice*salesDetail.salesQty }}</span>
+          </div> -->
+          </div>
+          <!-- <p col-3>数量：{{salesDetail.salesQty}}</p> -->
+          <span class="ion-no-margin font-10 color-999 " *ngIf="salesDetail?.remark?.length>0">备注：{{salesDetail.remark}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 "
+            *ngIf="(salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr')?.length>0">{{salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr'}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 " *ngFor="let itemDitail of salesDetail.tmpAdditionList">
+            {{itemDitail.itemName +"×" + shopSer.getAdditionNum(itemDitail,salesDetail)+";￥" 
+          +  shopSer.getAdditionPrice(itemDitail,salesDetail)
+        }};
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 "
+            *ngFor="let itemDitail of salesDetail.tmpGroupeList">{{itemDitail.itemName +"×" +utilProvider.accDiv(itemDitail.salesQty,salesDetail.salesQty,0)
+          +";￥"   + utilProvider.accMul(itemDitail.salesPrice,utilProvider.accDiv(itemDitail.salesQty,salesDetail.salesQty,0))}};
+            <br /></span>
+
+          <div class="div-button"
+            *ngIf="checkedSalesDetail.id&&checkedSalesDetail.id==salesDetail.id&&checkedSalesDetail.salesQty>0&&checkedSalesDetail.returnQty<checkedSalesDetail.salesQty">
+            <button ion-button round (click.stop)="doPushFood(salesDetail)">催菜</button>
+            <button ion-button round *ngIf="salesDetail.measureFlag!='Z'" (click)="retreatFood(salesDetail)">退菜</button>
+            <button ion-button round *ngIf="salesDetail.isWaitingDish=='Y'"(click)="callSingleFood(salesDetail)">叫起</button>
+            <button ion-button round *ngIf="salesDetail.measureFlag=='Z'" (click)="retreatAllFood(salesDetail)">全部退菜</button>
+          </div>
+
+          <!-- <p>{{salesDetail.salesPrice*salesDetail.salesQty}}</p>
+        <p>数量：{{salesDetail.salesQty}}</p> -->
+        </ion-label>
+
+      </ion-item>
+    </ng-container>
+  </ion-list>
+
+  <!-- 完成 -->
+  <ion-list *ngIf="finishItemList.length>0">
+    <ion-list-header>
+      已划菜
+    </ion-list-header>
+    <ng-container *ngFor="let salesDetail of finishItemList">
+      <ion-item tappable class="cart-item" *ngIf="salesDetail.salesQty>0&&(salesDetail.parentSpuId==null||salesDetail.parentSpuId=='')"
+        [ngClass]="{'active': checkedSalesDetail.id==salesDetail.id}" (click)="selectItem(salesDetail)" lines="none">
+        <ion-label>
+          <div>
+            <!-- <canvas class="div-canvas">{{canvas()}}
+            </canvas> -->
+            <ion-row no-padding no-margin style="width: 100%" class="h-center">
+              <div col-9 class="h-center">
+                <ion-row>
+                  <p class="fort jz-center" *ngIf="preferentialType(salesDetail)">{{preferentialType(salesDetail)}}</p>
+                  <p class="fort jz-center" *ngIf="salesDetail.isWaitingDish=='Y'">等</p>
+                  <!-- 退菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.salesQty<0">退</p>
+                  <!-- 加菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.itemStatus == '1'">加</p>
+                  <h2 class="jz-center">{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}
+                  </h2>
+                </ion-row>
+              </div>
+              <del col-3 class="p-r-5"
+                *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)|number:'1.0-2'}}
+              </del>
+            </ion-row>
+            <ion-row style="width: 100%" class="h-center">
+              <!-- <h2 col-6>{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}</h2> -->
+              <p col-4 class="">（单）：￥{{woShopService.getUnitSalesPrice(salesDetail)|number:'1.0-2'}}</p>
+              <p col-4 class="jz-center">数量：{{salesDetail.salesQty |number:'1.0-2'}}</p>
+              <p col-4 class="default-price" style="color: #000000">
+                ￥{{woShopService.getSalesAmt(salesDetail)|number:'1.0-2'}}
+                <!-- <br /><del class="p-r-5"
+                  *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)}}
+                </del> -->
+              </p>
+            </ion-row>
+            <!-- <div>
+              <span class="default-price">￥{{salesDetail.retailPrice*salesDetail.salesQty }}</span>
+            </div> -->
+          </div>
+          <!-- <p col-3>数量：{{salesDetail.salesQty}}</p> -->
+          <span class="ion-no-margin font-10 color-999 " *ngIf="salesDetail?.remark?.length>0">备注：{{salesDetail.remark}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 "
+            *ngIf="(salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr')?.length>0">{{salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr'}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 " *ngFor="let itemDitail of salesDetail.tmpAdditionList">
+            {{itemDitail.itemName +"×" + shopSer.getAdditionNum(itemDitail,salesDetail)+";￥" 
+            + shopSer.getAdditionPrice(itemDitail,salesDetail)
+          }};
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 " *ngFor="let itemDitail of salesDetail.tmpGroupeList">{{itemDitail.itemName +"×" +shopSer.getAdditionNum(itemDitail,item)
+            +";￥"   +  shopSer.getAdditionPrice(itemDitail,item)}};
+            <br /></span>
+
+          <div class="div-button"
+            *ngIf="checkedSalesDetail.id&&checkedSalesDetail.id==salesDetail.id&&checkedSalesDetail.salesQty>0&&checkedSalesDetail?.returnQty<checkedSalesDetail.salesQty">
+            <!-- <button ion-button round (click.stop)=" doPushFood(salesDetail)">催菜</button> -->
+            <button ion-button round (click)="retreatFood(salesDetail)">退菜</button>
+          </div>
+
+          <!-- <p>{{salesDetail.salesPrice*salesDetail.salesQty}}</p>
+          <p>数量：{{salesDetail.salesQty}}</p> -->
+        </ion-label>
+
+      </ion-item>
+    </ng-container>
+  </ion-list>
+
+
+  <!-- 退品 -->
+  <ion-list *ngIf="returnItemList.length>0">
+    <ion-list-header>
+      退菜
+    </ion-list-header>
+    <ng-container *ngFor="let salesDetail of returnItemList">
+      <ion-item tappable class="cart-item" *ngIf="salesDetail.salesQty<0&&(salesDetail.parentSpuId==null||salesDetail.parentSpuId=='')"
+        [ngClass]="{'active': checkedSalesDetail.id==salesDetail.id}" (click)="selectItem(salesDetail)" lines="none">
+        <ion-label>
+          <div>
+            <ion-row no-padding no-margin style="width: 100%" class="h-center">
+              <div col-9 class="h-center">
+                <ion-row>
+                  <p class="fort jz-center" *ngIf="preferentialType(salesDetail)">{{preferentialType(salesDetail)}}</p>
+                  <p class="fort jz-center" *ngIf="salesDetail.isWaitingDish=='Y'">等</p>
+                  <!-- 退菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.salesQty<0">退</p>
+                  <!-- 加菜 -->
+                  <p class="fort jz-center" *ngIf="salesDetail.itemStatus == '1'">加</p>
+                  <h2 class="jz-center">{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}
+                  </h2>
+                </ion-row>
+              </div>
+              <del col-3 class="p-r-5"
+                *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)|number:'1.0-2'}}
+              </del>
+            </ion-row>
+            <ion-row style="width: 100%" class="h-center">
+              <!-- <h2 col-6>{{salesDetail.itemName}}{{salesDetail?.specs1?'('+salesDetail.specs1+')':''}}</h2> -->
+              <p col-4 class="">（单）：￥{{woShopService.getUnitSalesPrice(salesDetail)|number:'1.0-2'}}</p>
+              <p col-4 class="jz-center">数量：{{salesDetail.salesQty |number:'1.0-2'}}</p>
+              <p col-4 class="default-price" style="color: #000000">
+                ￥{{woShopService.getSalesAmt(salesDetail)|number:'1.0-2'}}
+                <!-- <br /><del class="p-r-5"
+                      *ngIf="woShopService.getSalesAmt(salesDetail)!=woShopService.getRetailAmt(salesDetail)">￥{{woShopService.getRetailAmt(salesDetail)}}
+                    </del> -->
+              </p>
+            </ion-row>
+          </div>
+          <span class="ion-no-margin font-10 color-999 " *ngIf="salesDetail?.remark?.length>0">备注：{{salesDetail.remark}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 "
+            *ngIf="(salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr')?.length>0">{{salesDetail.itemAttr  |jsonString: 'salesDetail.itemAttr'}}
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999 " *ngFor="let itemDitail of salesDetail.tmpAdditionList">
+            {{itemDitail.itemName +"×" +  shopSer.getAdditionNum(itemDitail,salesDetail)+";￥" 
+                + shopSer.getAdditionPrice(itemDitail,salesDetail)
+              }};
+            <br /></span>
+          <span class="ion-no-margin font-10 color-999"
+            *ngFor="let itemDitail of salesDetail.tmpGroupeList">{{itemDitail.itemName +"×" +utilProvider.accDiv(itemDitail.salesQty,salesDetail.salesQty,0)
+                +";￥"   + utilProvider.accMul(itemDitail.salesPrice,utilProvider.accDiv(itemDitail.salesQty,salesDetail.salesQty,0))}};
+            <br /></span>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+
+  <!-- 订单信息 -->
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>订单信息</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="info">
+      <ion-label>
+        <span>下单时间</span>
+      </ion-label>
+      <span item-end>{{salesh.salesTime}}</span>
+    </ion-item>
+    <ion-item class="info" *ngIf="salesh.remark&&salesh.remark.length>0&&salesh.remark!='null'">
+      <ion-label>
+        <span>备注</span>
+      </ion-label>
+      <span item-end>{{salesh.remark}}</span>
+    </ion-item>
+    <ion-item class="info" *ngIf="custom?.custName">
+      <ion-label>
+        <span>会员</span>
+      </ion-label>
+      <span item-end>{{custom.custName}}({{custom.discountTypeName}})</span>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>区域编号</span>
+      </ion-label>
+      <span item-end>{{appShopping.salesTable.areaName}}({{appShopping.salesTable.areaCode}})</span>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>桌台编号</span>
+      </ion-label>
+      <span item-end>
+        {{appShopping.salesTable.virtualId?appShopping.salesTable.tableName+'('+appShopping.salesTable.virtualId+')':appShopping.salesTable.tableName}}</span>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>用餐人数</span>
+      </ion-label>
+      <span item-end>{{salesh.personNum}}位</span>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>现金押金</span>
+      </ion-label>
+      <span item-end>{{salesTable.preAmt}}元</span>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>茶位费</span>
+        <span *ngIf="appShopping.salesTable.teaAmt">(￥{{salesh.ttlTeaAmt/salesh.personNum}}/位)</span>
+      </ion-label>
+      <span item-end *ngIf="salesh.ttlTeaAmt&&salesh.ttlTeaAmt!=0" class="lage-price">￥{{salesh.ttlTeaAmt}}</span>
+      <span item-end *ngIf="!salesh.ttlTeaAmt||salesh.ttlTeaAmt==0">免茶位费</span>
+    </ion-item>
+    <ion-item class="info" *ngIf="appShopping.table.minConsumeAmt&&appShopping.table.minConsumeAmt>0">
+      <ion-label>
+        <span>最低消费金额</span>
+      </ion-label>
+      <span item-end>￥{{appShopping.table.minConsumeAmt}}</span>
+    </ion-item>
+    <!-- <ion-item class="info">
+      <ion-label>
+        <span>合计消费</span>
+      </ion-label>
+      <span item-end
+        class="lage-price">￥{{utils.mathAdd(orderSer.orderDetail.totalSalesAmt,shopSer.teaAmtInfo.teaAmtTotal)}}</span>
+    </ion-item> -->
+  </ion-list>
+  <!-- 
+  <ion-card>
+    <button ion-item (click)="toRemark()">
+      <span item-start class="font-13 color-333">备注</span>
+      <ion-label>
+        <p text-right *ngIf="!salesh.remark">您有什么其他要求呢</p>
+        <p text-right *ngIf="salesh.remark" class="font-14 color-000">{{salesh.remark}}</p>
+      </ion-label>
+    </button>
+
+  </ion-card> -->
+  <!-- <button ion-button (click)="pop()" disabled-button>关闭页面</button> -->
+</ion-content>
+<ion-footer>
+
+  <div class="flex">
+    <ion-row class="footer-inner flex ion-justify-content-between ion-align-items-center">
+      <span class="font-13 first-span">已优惠￥{{(salesh.retailAmt-salesh.salesAmt) |number:'1.0-2'}}</span>
+      <div class="end-div">
+        <span class="font-13 p-r-5">合计￥</span>
+        <span class="font-18 blod">{{utilProvider.accAdd(salesh.salesAmt,salesh.ttlTeaAmt) |number:'1.0-2'}}</span>
+      </div>
+    </ion-row>
+    <button style="background: coral;color:#FFFFFF" ion-button (click)="addItem()" disabled-button>加菜</button>
+    <button ion-button (click)="placeOrder()" disabled-button>结账</button>
+  </div>
+
+</ion-footer>
+<div style="height: 100%;" [ngClass]="{'temporaryDish': isAppear}">
+  <temporary-dish *ngIf="isAppear" (noAppear)="toCancel($event)"></temporary-dish>
+</div>

@@ -1,0 +1,16 @@
+page-newAddCustomer{
+    .list-ios[inset]{
+        margin: 0;
+    }
+    .error-message{
+        text-align: center;
+        color: red;
+    }
+    .btns{
+        text-align: center;
+
+        button{
+            margin: 0 35px;
+        }
+    }
+}

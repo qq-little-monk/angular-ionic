@@ -1,0 +1,142 @@
+page-take-order-tab {
+  .scroll-content {
+    -webkit-overflow-scrolling: auto !important;
+  }
+
+  .table-status {
+    .toolbar-background {
+      background: #FFFFFF;
+    }
+
+    .toolbar-content {
+      padding: 0 r(20px);
+
+      span {
+        font-size: r(22px);
+        padding  : 0 r(10px);
+      }
+    }
+  }
+
+  .area-container {
+
+    background: #efefef;
+    padding   : 0;
+
+    ion-scroll {
+      .scroll-content {
+        background                : transparent;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+
+    .area-box {
+      padding   : r(30px) r(10px);
+      text-align: center;
+    }
+
+    .area-box.active {
+      background : #fff;
+      color      : #ff8118;
+      font-weight: 600;
+    }
+  }
+
+  .table-container {
+    .scroll-content {
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    padding: r(30px) 0 0 r(30px);
+
+    .table-box.free {
+      background: #c3c3c3;
+
+      h3,
+      p,
+      span {
+        color: #fff;
+      }
+    }
+
+    .table-box {
+      text-align     : center;
+      width          : 45%;
+      max-width      : r(220px);
+      height         : r(210px);
+      overflow       : hidden;
+      margin         : 0 r(30px) r(30px) 0;
+      //   box-shadow: 0px 0px 1px 1px #fafafa;
+      border         : r(2px) solid #c9c9c9;
+      float          : left;
+      padding        : r(10px);
+      position       : relative;
+      border-radius  : r(8px);
+
+      h3 {
+        text-align : center;
+        color      : #333;
+        font-weight: 500;
+      }
+
+      .num-time {
+        position: absolute;
+        bottom  : r(10px);
+        width   : calc(100% - 0.26666rem);
+
+        span {
+          font-size: r(22px);
+        }
+      }
+
+      .tips {
+        position : absolute;
+        right    : r(-24px);
+        top      : r(4px);
+        padding  : 0 r(30px);
+        transform: rotate(45deg);
+        color    : #fff;
+        font-size: r(20px);
+      }
+
+      .tips.o {
+        background: orange;
+      }
+    }
+
+  }
+
+  .all-backgroud {
+    position  : absolute;
+    // opacity: 0.5;
+    background: none;
+    height    : 100%;
+    width     : 100%;
+    z-index   : 100;
+
+    .div {
+      position     : absolute;
+      background   : #000000;
+      background   : rgba(0, 0, 0, 0.7);
+      //  opacity: 0.7!important;
+      top          : 20%;
+      right        : 10%;
+      opacity      : 1;
+      text-align   : center;
+      height       : 40%;
+      width        : 80%;
+      border-radius: r(20px);
+
+      .sales-table {
+        border-radius: r(10px);
+        opacity      : 1 !important;
+        height       : r(240px);
+        width        : r(240px);
+        margin-left  : 5%;
+        margin-top   : 5%;
+        background   : #FFFFFF;
+      }
+    }
+
+  }
+}

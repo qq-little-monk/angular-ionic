@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>添加会员</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="flags" (ngSubmit)="sure(flags.value);$event.stopPropagation()" novalidate>
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-label>*会员卡号</ion-label>
+                <ion-input type="text" [formControl]="custCode"></ion-input>
+              </ion-item>
+              <div *ngIf="custCode.hasError('required') && custCode.touched" class="error-message">* 请输入会员卡号</div>
+              <div *ngIf="custCode.hasError('pattern') && custCode.touched" class="error-message">* 请输入正确的卡号，可输入数字加英文字母</div>
+              <ion-item>
+                <ion-label>*会员姓名</ion-label>
+                <ion-input type="text" [formControl]="custName"></ion-input>
+              </ion-item>
+              <div *ngIf="custName.hasError('required') && custName.touched" class="error-message">* 请输入会员姓名</div>
+              <ion-item>
+                <ion-label>手&nbsp;&nbsp;机&nbsp;&nbsp;号</ion-label>
+                <ion-input type="number" [formControl]="custMobile"></ion-input>
+              </ion-item>
+              <div *ngIf="(custMobile.hasError('minlength')||custMobile.hasError('maxlength')||custMobile.hasError('pattern')) && custMobile.touched" class="error-message">* 请输入正确的电话号码</div>
+              <ion-item>
+                <ion-label>生&nbsp;&nbsp;&nbsp;&nbsp;日</ion-label>
+                <ion-input type="date" [formControl]="birthDay"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>会员密码</ion-label>
+                <ion-input type="password" [formControl]="password"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>确认密码</ion-label>
+                <ion-input type="password" [formControl]="customerRePassword"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>电子邮箱</ion-label>
+                <ion-input type="email" [formControl]="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>*会员等级</ion-label>
+                <ion-select [formControl]="gradeId">
+                  <ion-option *ngFor="let i of gradeList" [value]="i.id">{{i.gradeName}}</ion-option>
+                  <!-- <ion-option [value]="i.id">{{i.gradeName}}</ion-option> -->
+                </ion-select>
+              </ion-item>
+              <div *ngIf="gradeId.hasError('required') && gradeId.touched" class="error-message">* 请输入会员等级</div>
+              <ion-item>
+                <ion-label>启&nbsp;&nbsp;&nbsp;&nbsp;用</ion-label>
+                <ion-toggle [formControl]="status"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label>*性&nbsp;&nbsp;&nbsp;&nbsp;别</ion-label>
+                <ion-select [formControl]="sex" [(ngModel)]="sexVal">
+                  <ion-option [selected]="sexVal=='1'" value="1">男性</ion-option>
+                  <ion-option value="0">女性</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>赊&nbsp;&nbsp;&nbsp;&nbsp;账</ion-label>
+                <!-- <ion-select [formControl]="chargeAccount">
+                  <ion-option value="1">开启</ion-option>
+                  <ion-option value="0" selected>关闭</ion-option>
+                </ion-select> -->
+                <ion-toggle [formControl]="chargeAccount" [(ngModel)]="chargeAccountVal"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label>赊账额度</ion-label>
+                <ion-input type="number" max="10" [formControl]="maxChargeAccount" placeholder="* 不填写额度或额度为0，则认为不限额" [disabled]="!chargeAccountVal?true:false"></ion-input>
+              </ion-item>
+              <!-- <div *ngIf="maxChargeAccount.hasError('pattern') && maxChargeAccount.touched" class="error-message">* 请输入0.01~999999999的额度</div> -->
+              <ion-item>
+                <!-- <span>地址</span>
+                <textarea [formControl]="customerAddress"></textarea> -->
+                <ion-label>地&nbsp;&nbsp;&nbsp;&nbsp;址</ion-label>
+                <ion-textarea rows="3" placeholder="例如：广东省广州市天河区xx街道xx栋" [formControl]="addr"></ion-textarea>
+              </ion-item>
+              <div *ngIf="addr.hasError('maxLength') && addr.touched" class="error-message">* 请输入0.01~999999999的额度</div>
+              <ion-item>
+                <!-- <span>备注</span>
+                <textarea [formControl]="customerRemarks"></textarea> -->
+                <ion-label>备&nbsp;&nbsp;&nbsp;&nbsp;注</ion-label>
+                <ion-textarea rows="3" placeholder="例如: 2020/6/13办理会员卡..." [formControl]="remark"></ion-textarea>
+              </ion-item>
+              <div *ngIf="remark.hasError('maxLength') && remark.touched" class="error-message">* 请输入0.01~999999999的额度</div>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div style="text-align: center" class="btns">
+              <button ion-button large type="reset" (click)="cancel()">取消</button>
+              <button ion-button large type="submit" color="secondary">确定</button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <!-- <button ion-button (click)="cancel()" full>取消</button> -->
+</ion-footer>
+

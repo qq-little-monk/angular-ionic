@@ -1,0 +1,75 @@
+<!--
+  Generated template for the HangOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>我的桌台</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="tableService.refreshData()">
+        <ion-icon name="refresh-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="padding-left:r(20px)">
+  <ion-list *ngFor="let tabArea of tabAreaList" >
+    <ng-container *ngIf="tabArea.id!=''">
+      <ion-list-header>
+        <ion-label> {{tabArea.areaName}}</ion-label>
+      </ion-list-header>
+      <div >
+        <ng-container *ngFor="let tab of tabList">
+          <ion-col tappable   *ngIf="tab.areaId==tabArea.id">
+            <div tappable class="table-box" (click)="checkedSalesTabFan(tab)"
+              *ngIf="tab.tmpSalesTableList.length>0&&tab.areaId==tabArea.id"
+              [ngClass]="{'tab-active':tab.id==this.checkedTab.id}">
+              <div class="tips o" *ngIf="tab.tmpSalesTableList.length==1">单</div>
+              <div class="tips o" *ngIf="tab.tmpSalesTableList.length>1">搭</div>
+              <h3>{{tab.tableName}}</h3>
+              <p class="font-18 ion-margin-top" style="color: orangered">￥{{tab.tmpPrice}}</p>
+              <p class="num-time flex ion-justify-content-between">
+                <span>{{tab.tmpManNumber}}/{{tab.personNum}}</span>
+                <span *ngIf="tab.tmpSalesTableList.length==1">{{showHour(tab.tmpSalesTableList[0].createdTime)}}</span>
+              </p>
+            </div>
+            <div tappable class="table-box free" *ngIf="tab.tmpSalesTableList.length==0"  (click)="checkedTabFan(tab)"
+              [ngClass]="{'tab-active':tab.id==this.checkedTab.id}">
+              <div class="tips o" *ngIf="tab.status=='3'">留</div>
+              <h3>{{tab.tableName}}</h3>
+              <p class="font-18 ion-margin-top" *ngIf="tab.status!='3'">空</p>
+              <p class="font-14 ion-margin-top">{{tab.remark}}</p>
+              <p class="num-time flex ion-justify-content-between">
+                <span>0/{{tab.personNum}}</span>
+              </p>
+            </div>
+          </ion-col>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ion-list>
+</ion-content>
+
+<div tappable class="all-backgroud custom-scroll" *ngIf="isShowTableDetail" (click)="cancel()">
+  <div class="div" tappable>
+    <ion-row>
+      <div tappable col-5 class="sales-table" *ngFor="let salesTable of this.checkedTab.tmpSalesTableList"
+        (click)="clickSalesTable(salesTable)">
+        <h3>{{salesTable.virtualId?salesTable.tableName+'('+salesTable.virtualId+')':salesTable.tableName}}</h3>
+        <p class="font-18 ion-margin-top" style="color: orangered">￥{{salesTable.salesAmt}}</p>
+        <p class="num-time flex ion-justify-content-between">
+          <span>{{salesTable.personNum}}</span>
+          <span>{{showHour(salesTable.createdTime)}}</span>
+        </p>
+      </div>
+    </ion-row>
+  </div>
+</div>

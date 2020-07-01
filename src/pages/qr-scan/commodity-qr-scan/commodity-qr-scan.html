@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <button ion-button icon-only (click)="goToPop()" [ngStyle]="{backgroundColor:'#fff'}">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button> -->
+    <ion-title>扫描中……</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content no-scroll [ngClass]="isShow ? 'qrscanner':'background-first'" style=" height: 100%">
+  <!-- <input type="text" [(ngModel)]="textVaule"/> -->
+  <div [ngClass]="{'qrscanner-area':isShow}"></div>
+  <div [ngClass]="{'through-line':isShow}"></div>
+  <div class="button-bottom">
+    <button (click)="toggleLight()" ion-fab class="icon-camera" margin-right>
+      <ion-icon name="flash"></ion-icon>
+    </button>
+    <!-- <button (click)="toggleCamera()" ion-fab class="icon-camera">
+      <ion-icon name="reverse-camera"></ion-icon>
+    </button> -->
+  </div>
+</ion-content>
+
+<ion-footer class="foot_back">
+  <ion-row nopadding class="foot-row">
+    <ion-col col-9>
+      <ion-input class="input-start" type="text" placeholder="可手动输入条形码" [(ngModel)]="code" id="inp"
+        (ionFocus)="focusInput()"></ion-input>
+    </ion-col>
+    <ion-col col-3>
+      <button (click)="goBack()" style="background: #0096ff;color: #FFFFFF;width: 100%;height: 50px">确定</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="container" #container>
+    <div class="container-header" #header>
+      <div class="inner">
+        <span>爱宝美食云</span>
+        <p>欢迎来到湾仔点心</p>
+      </div>
+
+    </div>
+    <div class="container-center" #center>
+      <ion-card>
+        <ion-card-header>
+          <h1 class="m-b-10">客官，您几位？</h1>
+          <span>桌号：01</span>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="people-container clearfix">
+            <div *ngFor="let people of peopleList" class="people-li">
+              <span class="people" [ngClass]="{'active': shopSer.diners.dinersNum == people}"
+                (click)="shopSer.diners.dinersNum = people">{{people}}人</span>
+            </div>
+            <div class="people-li">
+              <span class="people" (click)="selectMore()">更多</span>
+            </div>
+
+          </div>
+          <button ion-button block round (click)="submit()">开始点餐</button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="container-footer">
+      <p>爱宝美食云提供技术支持</p>
+    </div>
+  </div>
+</ion-content>

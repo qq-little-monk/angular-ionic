@@ -1,0 +1,25 @@
+page-wo-place-order {
+    ion-footer {
+        height: r(100px);
+        .footer-inner {
+            background: #191919;
+            flex: 1;
+            color: #fff;
+            padding: 0 r(20px);
+            height: 100%;
+            line-height: r(100px);
+        }
+        .button {
+            margin: 0 r(-2px) 0 0;
+            border-radius: 0;
+            border-style: none;
+            color: #191919;
+            height:  r(100px);
+            // font-size: 14px;
+            
+        }
+        .button-native {
+            line-height: initial !important;
+        }
+    }
+}

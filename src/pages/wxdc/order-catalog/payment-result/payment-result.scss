@@ -1,0 +1,41 @@
+page-payment-result {
+    .success {
+        text-align: center;
+        margin-top: r(80px);
+    
+        img {
+            width: r(200px);
+        }
+    }
+    
+    h2 {
+        font-size: r(36px);
+        font-weight: 500;
+    }
+    
+    .price {
+        margin-top: r(30px);
+    
+        span {
+            display: inline-block;
+            margin-bottom: r(10px)
+        }
+    }
+    
+    .key {
+        font-size: r(28px);
+        font-weight: 500;
+    }
+    
+    .value {
+        font-size: r(36px);
+        font-weight: 600;
+        color: red;
+        padding-left: r(20px);
+    }
+    
+    .order-btn {
+        margin-top: r(40px);
+        margin:  r(40px) r(20px) 0; 
+    }
+}

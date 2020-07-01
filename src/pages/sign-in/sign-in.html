@@ -1,0 +1,116 @@
+<!--
+  Generated template for the SignInPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-content class="aibao-bg"> -->
+<!-- <ion-grid class="logo">
+    <ion-row>
+      <ion-col text-center>
+        <br>
+        <ion-title><img src="assets/imgs/logo-login.png" style="width: 50%; height:50%;"></ion-title>
+        <br>
+        <br>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+<!-- <ion-content padding> --> 
+  <div class="aibao-bg">
+
+    <div class="login-form">
+
+      <div class="login-form-hander jz-center">
+        爱宝点菜宝 (V{{appConstants.VERSION}})
+      </div>
+      <div no-lines class="login-form-list">
+        <ion-item class="login-form-item">
+          <img src="assets/imgs/sign/account.png" item-start width="22">
+          <ion-input type="text" maxlength="50" [(ngModel)]="username" clearInput placeholder="请输入员工账号"></ion-input>
+        </ion-item>
+        <ion-item class="login-form-item">
+          <img src="assets/imgs/sign/password.png" item-start width="22">
+          <ion-input type="password" [(ngModel)]="password" clearInput placeholder="请输入密码" id="inp"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="login-form-botton jz-center">
+        <button ion-button block class="button button-full button-change" color="main" (click)="signIn()"
+          [disabled]="!username || !password">
+          <span class="login-text" style="font-size: 18px">登录</span>
+        </button>
+        <!-- <button ion-button block class="button button-full button-change" color="main" (click)="setRoot()">
+        点餐页面
+      </button> -->
+      </div>
+    </div>
+
+    <div class="bottom-buttons jz-center">
+      <ion-row class="row-button">
+        <ion-col>
+          <button class="button-ip" (click)="goToQr()"><img src="assets/imgs/sign/qrscan.png" width="90%" height="95%">
+            扫描收银台
+          </button>
+        </ion-col>
+        <ion-col>
+          <button class="button-ip" (click)="inputIp()"><img src="assets/imgs/sign/inputip.png" width="90%"
+              height="95%">
+            手动输入IP
+          </button>
+        </ion-col>
+        <ion-col *ngIf="!isLine">
+          <button class="button-ip" (click)="onShowIP()"><img src="assets/imgs/sign/noline.png" width="90%"
+              height="95%">
+            收银台连接
+          </button>
+        </ion-col>
+        <ion-col *ngIf='isLine' class="isLine-ip">
+          <button (click)="onShowIP()"><img src="assets/imgs/sign/line.png" width="90%" height="95%">
+            <span style="color: #FFFFFF">已连接</span>
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+    </div>
+  </div>
+<!-- </ion-content> -->
+<!-- </ion-content> -->
+
+<!-- <ion-content class="aibao-bg">
+  <div class="login-form">
+    <ion-row>
+      <button class="button-ip" col-4 (click)="onShowIP()"><img src="assets/imgs/syt_sta_outline.png" width="90%"
+          height="95%"></button>
+      <button class="button-ip" col-4 (click)="inputIp()"><img src="assets/imgs/sdsr.png" width="90%"
+          height="95%"></button>
+      <button class="button-ip" col-4 (click)="goToQr()"><img src="assets/imgs/smsyt.png" width="90%"
+          height="95%"></button>
+    </ion-row>
+    <ion-list no-lines class="login-form-list">
+      <ion-item class="login-form-item">
+        <img src="assets/imgs/sign/account.png" item-start width="22" class="imag-input">
+        <ion-input type="text" maxlength="50" [(ngModel)]="data.workId" clearInput placeholder="请输入服务员工号"></ion-input>
+      </ion-item>
+
+      <ion-item class="login-form-item" style="border-top-width: 0 !important;">
+        <img src="assets/imgs/sign/password.png" item-start width="22" class="imag-input">
+        <ion-input type="password" [(ngModel)]="data.password" clearInput placeholder="请输入密码" id="inp"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div style="padding: 0 20px">
+      <button ion-button block class="button button-full button-change" color="main" (click)="signIn()"
+        >
+        登录
+      </button>
+    </div>
+    <div style="padding: 0 20px">
+      <button ion-button block class="button button-full button-change" color="main" (click)="setRoot()">
+        点餐页面
+      </button>
+    </div>
+  </div>
+
+
+</ion-content> -->

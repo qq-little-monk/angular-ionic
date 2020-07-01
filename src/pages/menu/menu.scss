@@ -1,0 +1,43 @@
+page-menu{
+  .content {
+    background: #333333;
+  }
+  .scroll-content {
+    background: #333333;
+  }
+  .content-first{
+
+    .item-ios{
+      background: #333333!important;
+    }
+    img{
+      width: r(50px)!important;
+      height: r(50px)!important;
+    }
+    span {
+      font-size: r(28px);
+      color: #FFFFFF;
+  }
+  ion-note{
+    font-size: r(28px);
+  }
+  .staff-name{
+    color: #FFFFFF!important;
+    font-size: r(28px);
+  }
+  .staff-img{
+    width: r(100px)!important;
+    height: r(100px)!important;
+  }
+  }
+
+  .list .item-block:not(:last-child) {
+    border-bottom: r(2px) solid #000000 !important;
+  }
+  .list-ios > .item-block:first-child {
+    border-top: r(2px) solid #000000;
+}
+.list-header, .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block, .item-ios.item-block .item-inner {
+  border-bottom: r(2px) solid #000000;
+}
+}

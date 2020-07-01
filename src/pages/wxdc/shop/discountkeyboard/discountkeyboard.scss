@@ -1,0 +1,48 @@
+page-discountkeyboard {
+    .content-ios,
+    .scroll-content {
+      background-color: #ffffff;
+
+    }
+    .scroll-content {
+      background: #efefef;
+    }
+.header-item{
+  
+  span {
+    color: #BBBBBB!important;
+
+  }
+}
+.row-button{
+  background: #ffffff;
+  width: 100%;
+}
+.btn-selected{
+  padding: r(10px)  r(10px)  r(10px)  r(10px);
+  color: red;
+}
+.btn-foucouce{
+  background: rgb(198, 214, 248);
+}
+.ion-segment{
+  position: absolute;
+  background: #fff;
+  top: r(48px);
+  height: 20px;
+}
+.segment-ios .segment-button {
+  font-size: r(28px);
+}
+.top-span{
+  position: absolute;
+  left: r(20px);
+  color: #BBBBBB!important;
+  padding-bottom: r(20px)!important;
+  margin-bottom: r(20px)!important;
+  font-size: r(28px)!important;
+}
+
+
+
+}

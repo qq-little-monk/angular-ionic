@@ -1,0 +1,155 @@
+<!--
+  Generated template for the WoOrderDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>收款</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        打印预结单
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="no-scroll">
+
+
+  <ion-list class="list-top" no-lines>
+    <ion-item>
+      <ion-label class="label-first">订单金额</ion-label>
+      <label item-end>￥{{retalTotalMoney}}</label>
+    </ion-item>
+    <ion-item>
+      <ion-label no-padding mo-marge>已优惠金额</ion-label>
+      <label item-end>￥{{retalTotalMoney-priceMap.allSalesPrice}}</label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="list-tow">
+    <button ion-item (click)="goToUnitPage()">
+      <ion-label>整单优惠</ion-label>
+      <ion-note item-end>￥{{retalTotalMoney}}</ion-note>
+    </button>
+    <!-- <ion-item>
+      <ion-label class="label-first">打折</ion-label>
+      <label item-end>￥{{retalTotalMoney}}</label>
+    </ion-item>
+    <ion-item>
+      <ion-label no-padding mo-marge>改价</ion-label>
+      <label item-end>￥{{retalTotalMoney-priceMap.allSalesPrice}}</label>
+    </ion-item> -->
+  </ion-list>
+
+  <ion-list class="list-thr" no-lines>
+    <ion-item>
+      <ion-label class="label-first">应收</ion-label>
+      <label item-end class="receivable">￥{{retalTotalMoney}}</label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="payMent">
+    <ion-list-header>
+      支付方式
+    </ion-list-header>
+    <ion-row>
+      <ion-col col-4 *ngFor="let payMent of payMentList">
+        <button ion-button clear class="" (click)="goToPayMent(payMent,payPrice)" [ngClass]="{'btn-selected': true}">
+          {{payMent.payName}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<!-- <ion-footer>
+  <div class="keyboard">
+    <number-keyboard [number]="price" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+</ion-footer> -->
+
+
+<!-- <ion-content padding>
+
+  <ion-list no-padding mo-marge>
+    <ion-item *ngFor="let cart of orderSer.orderDetail.posUserorderDetailList" no-lines class="cart-item">
+      <ion-thumbnail item-start>
+        <img [src]="cart.imageUrl | imgUrl: 'dish'" imgError="dish">
+      </ion-thumbnail>
+      <ion-label>
+        <div class="flex ion-justify-content-between ion-align-items-center ion-margin-bottom">
+          <h2>{{cart.goodsName}}</h2>
+          <div>
+            <span class="default-price color-333">￥{{priceMap.price}}</span>
+          </div>
+        </div>
+        <p>数量：{{totalQty}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item class="border-top" no-lines>
+      <ion-label>
+        <div text-right class="font-12">
+          不可打折金额：<span class="red p-r-5">￥{{priceMap.allUndisCountPrice || 0}}</span>
+          可打折金额：<span no-padding class="red p-r-5">￥{{priceMap.allDisCountPrice}}</span>
+          已优惠：<span class="red p-r-5">￥{{retalTotalMoney-priceMap.allSalesPrice}}</span>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="border-top" no-lines>
+      <ion-label>
+        <div text-right class="font-14">
+          应收：<span no-padding class="lage-price">￥{{woShopService.getSalesTotalMoney()}}</span>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>支付方式</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>现金</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>微信</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>支付宝</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="info">
+      <ion-label>
+        <span>免单</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="info" *ngIf="orderSer.orderDetail.posUserorder.description">
+      <ion-label>
+        <span>银联</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <button ion-button block round outline (click)="addOrder()">抹零</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block round>付款</button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-footer> -->

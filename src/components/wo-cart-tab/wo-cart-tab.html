@@ -1,0 +1,33 @@
+<!-- 购物车底部栏 -->
+<div class="cart_tab">
+  <!-- <div class="cart_tab_tips animated" [ngClass]="{'fadeIn': showTips,'fadeOut':!showTips}" *ngIf="showTips">
+    <i></i>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/public/default-user.png">
+      </ion-avatar>
+      <ion-label>
+        <p>纸飞机点了红烧猪肚+{{deshNumber}}</p>
+      </ion-label>
+    </ion-item>
+  </div> -->
+  <div tappable class="cart-icon" (click)="_open()">
+    <ion-badge #parabola>
+      <span class="num-badge" [hidden]="false"
+        *ngIf="appShopping.salesDetailList&&appShopping.salesDetailList.length>0">
+        {{shopSer.getTotalNum()}}
+      </span>
+    </ion-badge>
+    <img src="assets/imgs/shop/cart.png">
+  </div>
+  <div tappable class="inner" (click)="_open()">
+    <span class="p-r-5">￥{{shopSer.getSalesTotalMoney()}}</span>
+    <del class="font-13 color-999">￥{{shopSer.getRetalTotalMoney()}}</del>
+    <!-- <p class="font-12 color-999 ion-no-margin">另外需要配送费￥1</p> -->
+  </div>
+  <button ion-button (click)="_stayHangOrder()" class="hangOrderBtn" *ngIf="appShopping.salesTable.id&&!appShopping.salesTable.salesId">下单</button>
+  <button ion-button (click)="_hangOrder()" class="hangOrderBtn" *ngIf="!appShopping.salesTable.id&&!appShopping.salesTable.salesId">选桌下单</button>
+  <button ion-button (click)="_place()" *ngIf="!appShopping.salesTable.salesId">结账</button>
+  <button ion-button (click)="result()" class="hangOrderBtn" *ngIf="appShopping.salesTable.salesId">取消</button>
+  <button ion-button (click)="_addItemOfOrder()" *ngIf="appShopping.salesTable.salesId">确认加菜</button>
+</div>

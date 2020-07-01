@@ -1,0 +1,63 @@
+page-wo-mt-order-list {
+
+    .card {
+        background: #fff;
+        box-shadow: none;
+      }
+    
+      .item {
+        ion-thumbnail {
+          width: r(100px);
+          height: r(100px);
+          border-radius: r(10px);
+          margin-right: r(20px);
+          overflow: hidden;
+        }
+    
+        p {
+          margin-bottom: r(16px);
+          color: #666;
+          font-size: r(28px);
+        }
+      }
+    
+      .order-inner {
+        padding-top: r(20px);
+        padding-bottom: r(20px);
+    
+        ion-label {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    
+      .order-list {
+        background: transparent;
+      }
+      .order-footer {
+        .op-btn {
+            height: r(60px) !important;
+            min-height: r(60px);
+            margin: 0 !important;
+            // font-size: r(28px);
+        }
+      }
+.ion-segment{
+  // position: absolute;
+  background: #fff;
+  top: r(0px);
+  z-index: 1000;
+}
+.segment-md .segment-button {
+  height:r(80px);
+  font-size:r(28px);
+  line-height: 1rem;
+  color: #000000;
+  background-color: transparent;
+}
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+  border-color: #ffb91c;
+  color: #ffb91c;
+  opacity: 1;
+}
+}

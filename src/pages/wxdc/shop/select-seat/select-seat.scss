@@ -1,0 +1,91 @@
+page-select-seat {
+    .container {
+        background-image: url("http://120.24.101.19:10006/690f545b3e72b4737b99a4d273112c28/2233db4bcbcd452bad30ef855f18bc8b.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:cover;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        height: 100%;
+        width: 100%;
+        position: relative;
+        // padding: 0 r(30px);
+    }
+    .container:after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+    .container-header {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // z-index: 3;
+        position: relative;
+        .inner {
+            position: absolute;
+            z-index: 3;
+            width: 100%;
+            top: 40%;
+            // height: 100%;
+            text-align: center;
+            span {
+                font-size: r(72px);
+                color: #fff;
+            }
+            p {
+                font-size: r(34px);
+                margin-top: r(20px);
+                color: #fff;
+                text-align: center;
+            }
+        }
+        
+    }
+    .container-center {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        bottom: r(120px);
+        .card {
+            border-radius: r(20px);
+            .card-header {
+                padding: r(30px) r(30px) 0;
+            }
+            box-shadow: none;
+            .people-container {
+                padding: r(30px) 0;
+
+                .people-li {
+                    width: 25%;
+                    margin: r(30px) 0;
+                    text-align: center;
+                    float: left;
+                }
+                span {
+                    padding: r(14px) r(40px);                    
+                }
+                span.active {
+                    background: color($colors,primary);
+                    border-radius: r(30px);
+                }
+            }
+        }
+    }
+    .container-footer {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        width: 100%;
+        height: r(120px);
+        p {
+            color: #fff;
+            text-align: center;
+            line-height: r(120px);
+        }
+    }
+}

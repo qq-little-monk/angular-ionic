@@ -1,0 +1,9 @@
+<div class="operation-btns">
+  <button ion-button clear class="sub" (click.stop)="subData()" *ngIf="numTmp != 0" >
+    <ion-icon color="primary" name="remove-circle-outline" #subEle></ion-icon>
+  </button>
+  <span class="num" *ngIf="numTmp > 0" (click.stop)="changeNum($event)">{{numTmp > 0?numTmp:''}}12312</span>
+  <button ion-button clear class="add" (click.stop)="addData($event)" [disabled]="disabled">
+    <ion-icon color="primary" name="add-circle" #addEle></ion-icon>
+  </button>
+</div>

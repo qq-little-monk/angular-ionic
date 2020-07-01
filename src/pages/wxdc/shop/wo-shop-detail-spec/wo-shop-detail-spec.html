@@ -1,0 +1,193 @@
+<!-- <div [ngClass]="{'isedilt': true}" class="isedilt"></div> -->
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>选择商品属性</ion-title>
+    <div class="container-header" text-right *ngIf="!isShowSlab">
+      <button ion-button clear (click)="close()">
+        <ion-icon name="woguanbi" class="font-18"></ion-icon>
+      </button>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- <div id="specMask" class="show" (click)="close()"></div> -->
+  <div class="container-bg">
+    <div class="container">
+
+      <ng-container *ngIf="!isShowSlab">
+        <div class="container-dish">
+          <div class="tips-left o " *ngIf="comSpu.measureFlag=='Z'">称</div>
+          <ion-item no-lines>
+            <ion-thumbnail item-start (click.stop)="utilProvider.showImg(comSpu.logoPath)">
+              <img [src]="comSpu.logoPath | imgUrl: 'comSpu'">
+            </ion-thumbnail>
+            <ion-label class="dish-label">
+              <h2>{{comSpu.itemName}}</h2>
+              <div>
+                <p class="m-t-5 p-inline" *ngIf="comSpu.minCount">{{comSpu.minCount?comSpu.minCount:1}}份起售</p>
+                <p class="m-t-5  p-inline p-color" *ngIf="comSpu.soldoutStatus=='1'&&comSpu.soldoutNum!=null">
+                  剩{{utilProvider.accSub(comSpu.soldoutNum,appShopping.spuOfCarComMap[comSpu.id])}}</p>
+              </div>
+              <div class="operation" *ngIf="!salesDetail?.id">
+                <ion-row justify-content-between align-items-center>
+                  <ion-col col-6 no-padding align-items-center class="flex jz-center">
+                    <!-- <span class="symbol">￥</span> -->
+                    <span class="default-price">￥{{getTotalSalesPrice()}}</span>
+                    <del class="del-price">￥{{getTotalReterPrice()}}</del>
+                  </ion-col>
+                  <ion-col col-12 no-padding text-right>
+                    <!-- <order-btn [(ngModel)]="comSpu.itemQty" (add)="addCart($event,comSpu,i)"
+                    (sub)='subCart($event,comSpu,i)'>
+                  </order-btn> -->
+                    <combo-btn class="comSpu-tmpQty" style="font-size: 50px" [com]="comSpu" [name]="tmpQty"
+                      (add)="addComSpu(comSpu)" (sub)="subComSpu(comSpu)" (setNumber)="setNumberComSpu(comSpu)">
+                    </combo-btn>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="isShowSlab">
+        <div class="container-slab-dish">
+          <img [src]="comSpu.logoPath | imgUrl: 'comSpu'">
+          <div class="slab-item-img-bot">
+            <h2>{{comSpu.itemName}}</h2>
+            <div>
+              <p class="m-t-5 p-inline" *ngIf="comSpu.minCount">{{comSpu.minCount?comSpu.minCount:1}}份起售</p>
+              <p class="m-t-5  p-inline p-color" *ngIf="comSpu.soldoutStatus=='1'&&comSpu.soldoutNum!=null">
+                剩{{utilProvider.accSub(comSpu.soldoutNum,appShopping.spuOfCarComMap[comSpu.id])}}</p>
+            </div>
+            <div class="operation" *ngIf="!salesDetail?.id">
+              <ion-row justify-content-between align-items-center>
+                <ion-col col-6 no-padding align-items-center class="flex jz-center">
+                  <!-- <span class="symbol">￥</span> -->
+                  <span class="default-price">￥{{getTotalSalesPrice()}}</span>
+                  <del class="del-price">￥{{getTotalReterPrice()}}</del>
+                </ion-col>
+                <ion-col col-12 no-padding text-right  class="comSpu-tmpQty">
+                  <!-- <order-btn [(ngModel)]="comSpu.itemQty" (add)="addCart($event,comSpu,i)"
+                  (sub)='subCart($event,comSpu,i)'>
+                </order-btn> -->
+                  <combo-btn style="font-size: 50px" [com]="comSpu" [name]="tmpQty"
+                    (add)="addComSpu(comSpu)" (sub)="subComSpu(comSpu)" (setNumber)="setNumberComSpu(comSpu)">
+                  </combo-btn>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+
+
+      <div class="container-center" [ngClass]="{'container-slab-center': isShowSlab}">
+        <ion-scroll scrollY="true">
+          <!-- 套餐 -->
+          <ion-list *ngFor="let comBoGroup of comBoGroupList">
+            <ion-list-header>
+              {{comBoGroup.comboName}} (必选：{{comBoGroup.mustNum}};
+              已选：{{comBoGroup.isFixedNum == '1'?comBoGroup.mustNum:comBoGroup.tmpMustNum}})
+            </ion-list-header>
+            <ion-row class="groud">
+              <ion-col col-6 *ngFor="let comBo of comBoGroup.comBoList" no-lins>
+                <ion-item>
+                  <button ion-item clear class="li"
+                    [disabled]="comBoGroup.isFixedNum == '1'||(!isCanAdd(comBoGroup,comBo))"
+                    (click)="selectComBo(comBoGroup,comBo)" [ngClass]="{'active': comBo.tmpQty>0}">
+                    <h2>{{comBo.comMap.sku.itemName}}{{comBo.comMap.sku.specs1?'('+comBo.comMap.sku.specs1+')':''}}</h2>
+                    <h3>加价{{comBo.increasePrice}}</h3>
+                    <span class="num-badge indexed-num-badge"
+                      *ngIf="comBo.tmpQty>0&&comBoGroup.isFixedNum == '1'">{{comBo.tmpQty}}</span>
+                    <!-- <p>{{comBo.tmpQty}}{{comBo.comMap.spu.unitName}}</p> -->
+                    <br />
+                    <div class="comBo-btns" item-end *ngIf="comBoGroup.isFixedNum != '1'">
+                      <combo-btn [com]="comBo" [name]="'comBo'" (add)="selectComBo(comBoGroup,comBo)"
+                        (sub)="subComBo(comBo)">
+                      </combo-btn>
+                    </div>
+                  </button>
+
+                  <!-- <button item-end clear class="end-button" (click)="subComBo(comBo)"
+                    *ngIf="comBoGroup.isFixedNum != '1'&&comBo.tmpQty>0">
+                    <ion-icon name="remove"></ion-icon>
+                  </button> -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+
+          <ng-container *ngIf="comSpu.itemType!='G'">
+            <!-- 规格 -->
+            <ion-list *ngIf="comSpu.specs&&comSpu.specs!=''&&comSpu.specs!=null">
+              <ion-list-header>
+                规格
+              </ion-list-header>
+              <ion-row>
+                <ion-col col-3 *ngFor="let comSku of specsSkuList">
+                  <button ion-button clear class="btn-pay-time" (click)="selectSku(comSku)"
+                    [ngClass]="{'btn-selected': checkedSpecsSku.specs1 == comSku.specs1}">
+                    {{comSku['specs1']}}
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+
+            <!-- 做法，忌口 -->
+            <ion-list *ngFor="let attrGroup of dynamicAttrList">
+              <ion-list-header>
+                {{attrGroup?.attrGroupName}}
+              </ion-list-header>
+              <ion-row>
+                <ion-col col-3 *ngFor="let dynamic of attrGroup?.allAttr">
+                  <button ion-button clear class="btn-pay-time" (click)="selectDynamic(attrGroup.attrGroupName,dynamic)"
+                    [ngClass]="{'btn-selected': dynamic.isckeckd}">
+                    {{dynamic['value']}}
+                  </button>
+                </ion-col>
+              </ion-row>
+              <!-- <div class="spec">
+              <span class="active">微辣</span>
+              <span>中辣</span>
+              <span>特辣</span>
+            </div> -->
+            </ion-list>
+
+            <!-- 加料商品 -->
+            <ion-list *ngFor="let additionGroup of additionGroupList">
+              <ion-list-header>
+                {{additionGroup.groupName}}
+                3333
+              </ion-list-header>
+              <div class="charging" *ngFor="let comAddition of additionGroup.additionList">
+                <div class="charging-item ion-align-items-center">
+                  <div class="name">
+                    <h3 class="ion-no-margin singleRow">{{comAddition.additionName}}&nbsp;&nbsp;￥{{comAddition.price}}/份
+                    </h3>
+                  </div>
+                  <div class="price" *ngIf="comAddition.price*comAddition.salesQty>0">
+                    <span class="p-r-5">￥{{comAddition.price*comAddition.salesQty}}</span>
+                  </div>
+                  <div class="btns">
+                    <addition-btn [aditionCom]="comAddition"></addition-btn>
+                  </div>
+                </div>
+              </div>
+            </ion-list>
+          </ng-container>
+        </ion-scroll>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer no-lines *ngIf="!salesDetail?.id">
+  <div>
+    <button ion-button block round (click)="addToCar()">加入购物车</button>
+  </div>
+</ion-footer>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>输入IP</ion-title>
+  </ion-navbar>
+
+  <!-- <ion-segment [(ngModel)]="campaignType" color="bluel" class="ion-segment" mode="ios">
+    <ion-segment-button value="3" class="text-size">
+      折扣
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      改价
+    </ion-segment-button>
+  </ion-segment> -->
+
+</ion-header>
+<ion-content>
+  <ion-item style="height: 30%;padding-top: 0%" class="keyboard-header" no-lines>
+    <ion-row>
+      <ion-col tappable align-self-end class="adress jz-center" (click)="checkValue(1,address1,$event)"
+        [ngClass]="{'btn-foucouce':address1.isClear,'btn-selected': index==1}">
+        {{address1.number}}
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col tappable align-self-end class="adress jz-center" (click)="checkValue(2,address2,$event)"
+        [ngClass]="{'btn-foucouce':address2.isClear,'btn-selected': index==2}">
+        {{address2.number}}
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col tappable align-self-end class="adress jz-center" (click)="checkValue(3,address3,$event)"
+        [ngClass]="{'btn-foucouce':address3.isClear,'btn-selected': index==3}">
+        {{address3.number}}
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col tappable align-self-end class="adress jz-center" (click)="checkValue(4,address4,$event)"
+        [ngClass]="{'btn-foucouce':address4.isClear,'btn-selected': index==4}">
+        {{address4.number}}
+      </ion-col>
+    </ion-row>
+  </ion-item>
+  <div style="height: 70%;" *ngIf="index==1">
+    <number-keyboard [number]="address1" [maxLength]='3' [havePoint]='fales' [isClear]='true' (confirm)="confirm()">
+    </number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="index==2">
+    <number-keyboard [number]="address2" [maxLength]='3' [havePoint]='fales' [isClear]='true' (confirm)="confirm()">
+    </number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="index==3">
+    <number-keyboard [number]="address3" [maxLength]='3' [havePoint]='fales' [isClear]='true' (confirm)="confirm()">
+    </number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="index==4">
+    <number-keyboard [number]="address4" [maxLength]='3' [havePoint]='fales' [isClear]='true' (confirm)="confirm()"
+      style="bottom:0 ;">
+    </number-keyboard>
+  </div>
+</ion-content>

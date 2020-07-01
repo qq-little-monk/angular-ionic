@@ -1,0 +1,52 @@
+<!--
+  Generated template for the BizlogPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar mode="ios">
+    <ion-title text-center>显示设置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines>
+    <ion-item>
+      <span item-start class="list-icon"></span>
+      <span item-start class="text-size-2">横屏模式</span>
+      <ion-toggle [(ngModel)]="appCache.Configuration.DP_LAND" (tap)="toggleFunHB('DP_LAND')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <span item-start class="list-icon"></span>
+      <span item-start class="text-size-2">开启无图模式</span>
+      <ion-toggle [(ngModel)]="appCache.Configuration.DP_NOIMG" (tap)="toggleFunNoImg('DP_NOIMG')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <span item-start class="list-icon">
+        <!-- <ion-icon name="barcode" class="image-style " style="color: #999999;"></ion-icon> -->
+      </span>
+      <span item-start class="text-size-2">开启大屏显示</span>
+      <ion-toggle [(ngModel)]="appCache.Configuration.DP_DP" (tap)="toggleFunHB('DP_DP')"></ion-toggle>
+    </ion-item>
+
+    <ion-list class="payMent" *ngIf="appCache.Configuration.DP_DP">
+      <ion-list-header style="font-weight:bold">
+        大屏列数设置
+      </ion-list-header>
+      <ion-item>
+        <ion-label>列数</ion-label>
+        <ion-select [(ngModel)]="appCache.Configuration.DP_DPNUM" (ionChange)="fontSize('DP_DPNUM')" multiple="fales"
+          okText="确定" cancelText="取消">
+          <ion-option [value]="4">一行四列</ion-option>
+          <ion-option [value]="3">一行三列</ion-option>
+          <ion-option [value]="2">一行二列</ion-option>
+          <ion-option [value]="1">一行一列</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+
+
+</ion-content>

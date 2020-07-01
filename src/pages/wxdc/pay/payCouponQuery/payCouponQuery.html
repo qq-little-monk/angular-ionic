@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item class="header-item" no-lines>
+      <span class="text-size-2 ">{{payMent?.payName}}</span>
+      <span class="text-size-2 " *ngIf="needPrice>0">还需收:￥{{needPrice}}</span><br>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="height: 30%;background-color: #FFFFFF;">
+    <ion-row no-lines style="height: 50%;" no-lines>
+      <div col-8 tappable class="keyboard-header input-text" (click)="foucouce()">
+        <span [ngClass]="{'btn-foucouce':coupon.isClear,'btn-selected': true}">{{coupon.number}}</span>
+      </div>
+      <div col-3 tappable>
+        <button no-lines no-padding style="background: coral;color:#FFFFFF;width: 100%;" ion-button
+          (click)="queryCouponAmt()" disabled-button>优惠券查询</button>
+      </div>
+    </ion-row>
+
+    <ion-row no-lines style="height: 50%;margin-top: 2px;" no-lines>
+      <ion-col col-6 *ngFor="let couponItem of couponList">
+        <button ion-button no-lines clear class="" [disabled]="isHaveCoupon(couponItem)"
+          (click)="selectCoupon(couponItem)" [ngClass]="{'btn-selected2': isHaveCoupon(couponItem)}">
+          {{couponItem.couponName}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div style="height: 70%;">
+    <number-keyboard [number]="coupon" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+</ion-content>

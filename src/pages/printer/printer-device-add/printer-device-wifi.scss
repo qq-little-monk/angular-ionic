@@ -1,0 +1,88 @@
+page-printer-device-wifi{
+
+	.bborder {
+	   border:1px solid red;
+	   background-color:transparent;
+	   border-color: #979797;
+	   //border-radius: 4px;
+	   //margin:3px;
+	}
+
+  .content {
+    background-color: #f2f2f2;
+  }
+
+  .wifi-addr {
+    background-color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .point {
+    font-size: r(60px);
+  }
+
+  .msg {
+    background-color: #FF3D3D;
+    height: r(40px);
+    width: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    position: absolute;
+    top: 0;
+  }
+
+  .printer-type {
+    background-color: #FFFFFF;
+  }
+
+  .printer-type .item-inner {
+    flex: none;
+    margin: 0 auto;
+    border: none !important;
+  }
+
+  .printer-type .input-wrapper{
+    flex: none;
+  }
+
+  .item-radio-checked ion-label, .item-radio .label {
+    color: #333333 !important;
+    font-size: r(30px);
+  }
+
+  .print-device .item{
+    color: #999999;
+  }
+
+  .print-device .item-block, .print-device .list-ios > .item-block:last-child {
+    border-bottom: 1px solid #EFEFEF !important;
+  }
+
+  .item-inner {
+    border: none !important;
+  }
+
+  .footer {
+    .button {
+      height: r(96px);
+      font-size: r(32px);
+    }
+  }
+  .radio-icon {
+    opacity: 0;
+  }
+
+  .radio {
+    position: relative;
+    font-family: "ionIcons";
+  }
+
+  .item-radio-checked .radio:after {
+    content: "\f149";
+    position: absolute;
+    font-size: r(48px);
+    top: 50%;
+    margin-top:r(-24px); ;
+    color: #0096ff;
+  }
+}

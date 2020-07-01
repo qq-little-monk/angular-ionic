@@ -1,0 +1,87 @@
+<!--
+  Generated template for the HangOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>取单</ion-title>
+  </ion-navbar>
+  <!-- <ion-toolbar class="table-status">
+    <span>空台：2</span>
+    <span>已下单：2</span>
+    <span>留位桌：2</span>
+    <span>待清桌: 2</span>
+    <span>已预订: 2</span>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content>
+  <div class="full-height">
+    <ion-row class="full-height">
+      <ion-col col-3 class="area-container full-height">
+        <ion-scroll class="full-height"  scrollY='true'>
+          <div tappable class="area-box" [ngClass]="{'active': tabArea==chackedArea }"
+            *ngFor="let tabArea of tabAreaList" (click)="selectArea(tabArea)">
+            {{tabArea.areaName}}
+          </div>
+        </ion-scroll>
+      </ion-col>
+      <ion-col col-9 class="table-container full-height">
+        <ion-scroll class="full-height">
+          <div tappable class="table-box" *ngFor="let tab of tabList" (click)="checkedTab(tab)">
+            <div class="tips o">单</div>
+            <h3>{{tab.virtualId?tab.tableName+'('+tab.virtualId+')':tab.tableName}}</h3>
+            <p class="num-time flex ion-justify-content-between">
+              <span>3/{{tab.personNum}}</span>
+              <span>21:55</span>
+            </p>
+          </div>
+          <div class="table-box free">
+            <h3>桌子2</h3>
+            <p class="font-18 ion-margin-top">空</p>
+            <p class="num-time flex ion-justify-content-between">
+              <span>0/5</span>
+              <span>21:55</span>
+            </p>
+          </div>
+          <div class="table-box">
+            <h3>桌子3</h3>
+            <p class="num-time flex ion-justify-content-between">
+              <span>3/5</span>
+              <span>21:55</span>
+            </p>
+          </div>
+          <!-- <div *ngIf="(tabList.length == 0)" style="margin: 60% auto; text-align: center;" class="button-nobanck">
+            <img src="assets/imgs/commodity/.png" width="30%" style="margin-left: 5%;">
+            <p ion-text color="main">暂无商品</p>
+          </div> -->
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<div class="all-backgroud" *ngIf="isShowTableDetail">
+  <div class="div">
+    <ion-row>
+      <div col-5 class="sales-table">
+        <h3>桌子2</h3>
+        <p class="font-18 ion-margin-top">空</p>
+        <p class="num-time flex ion-justify-content-between">
+          <span>0/5</span>
+          <span>21:55</span>
+        </p>
+      </div>
+      <div col-5 class="sales-table">
+        <h3>桌子2</h3>
+        <p class="font-18 ion-margin-top">空</p>
+        <p class="num-time flex ion-justify-content-between">
+          <span>0/5</span>
+          <span>21:55</span>
+        </p>
+      </div>
+    </ion-row>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+page-setSalesDetailNumber {
+
+  .content-ios,
+  .scroll-content {
+    background-color: #ffffff;
+
+  }
+
+  .scroll-content {
+    background: #efefef;
+  }
+
+  .header-item {
+    span {
+      color: #BBBBBB !important;
+    }
+  }
+
+  .keyboard-header {
+    padding   : r(30px) r(30px) r(30px) r(30px);
+    margin    : r(0px) r(30px) r(30px) r(30px);
+    border    : 1px solid #E5E5E5;
+    height    : 100%;
+    text-align: center;
+
+    span {
+      text-align: center;
+      padding   : r(10px) r(10px) r(10px) r(10px);
+      font-size : r(50px);
+      // color: #BBBBBB!important;
+    }
+
+    .item {
+      padding-left: 0;
+    }
+  }
+
+  .btn-selected {
+    padding-top: r(10px);
+    color      : red;
+
+  }
+
+  .btn-foucouce {
+    background-color: rgb(198, 214, 248) !important;
+  }
+}

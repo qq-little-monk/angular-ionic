@@ -1,0 +1,39 @@
+<!--
+  Generated template for the SuccessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBackToLogin()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title text-center>注册成功</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-label text-center style="font-size: 1.14em;margin: 80px 0 30px 0;">恭喜您已成功注册移动收银！</ion-label>
+
+  <ion-label text-center no-margin>
+    <ion-note color="node">以下是您的账号信息</ion-note>
+  </ion-label>
+
+  <ion-list no-lines>
+    <ion-item text-center style="font-size: 1.42em;">
+      <span >登录商户号：{{sellerId}}</span>
+    </ion-item>
+  </ion-list>
+
+  <div class="bottom-btn">
+    <button ion-button block color="main" (click)="goBackToLogin()">开始收银</button>
+  </div>
+
+</ion-content>

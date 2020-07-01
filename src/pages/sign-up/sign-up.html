@@ -1,0 +1,130 @@
+<!--
+  Generated template for the SignUpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar mode="ios">
+    <ion-title text-center>注册</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content fullscreen="true">
+  <div padding class="div-con">
+    <ion-grid no-padding class="list-con">
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>
+              <img src="assets/imgs/sign/phone.png">
+            </ion-label>
+            <ion-input type="tel" placeholder="请输入手机号" maxlength="11" [(ngModel)]="mobile" (input)="mobileInput($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>
+              <img src="assets/imgs/sign/verification.png">
+            </ion-label>
+            <ion-input type="number" placeholder="请输入短信验证码" [(ngModel)]="code"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-auto align-self-center style="padding-right: 8px">
+          <button small ion-button block color="self-yellow" class="disabled-btn" (click)="getVerificationCode()" [disabled]="retry || codeDisable">
+            {{retry ? '等待(' + timeCount +')' : '获取验证码'}}
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>
+              <img src="assets/imgs/sign/password.png">
+            </ion-label>
+            <ion-input type="password" placeholder="请输入8-20位数字和字母组合" maxlength="20" clearInput [(ngModel)]="password"></ion-input>
+            <!--<ion-note item-end>-->
+              <!--<img src="assets/imgs/eye-close.png">-->
+            <!--</ion-note>-->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>
+              <img src="assets/imgs/sign/password.png">
+            </ion-label>
+            <ion-input type="password" placeholder="请再次填写密码" maxlength="20" clearInput [(ngModel)]="confirm"></ion-input>
+            <!--<ion-note item-end>-->
+              <!--<img src="assets/imgs/eye-open.png">-->
+            <!--</ion-note>-->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div padding class="div-con">
+    <ion-grid no-padding class="list-con">
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label>
+              <img src="assets/imgs/sign/account.png">
+            </ion-label>
+            <ion-input type="text" placeholder="请输入门店名称" maxlength="20" clearInput [(ngModel)]="storeName"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button ion-item no-lines (click)="bizScope()" style="font-size: 1.4rem;">
+            <img src="assets/imgs/sign/scope-list.png" item-start>
+            <ion-label>主营行业</ion-label>
+            <ion-note item-end [color]="scope.tradeId != null ?'third':'placeholder'">{{scope.tradeId != null ? scope.tradeName : '（必选项）请选择'}}</ion-note>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--<p>
+      <ion-note color="node" text-wrap><span ion-text color="danger">注</span>：主营类目一经提交便无法修改，请按您实际经营行业选择</ion-note>
+    </p>-->
+
+    <ion-grid no-padding margin-top class="bottom-btn">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="main" (click)="signUp()" [disabled]="!readed">
+            完成注册
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row align-self-center>
+        <ion-col col-auto col-auto (click)="changeAgreement()">
+          <!--<ion-icon name="ios-checkbox" color="placeholder" *ngIf="!readed; else checked"></ion-icon>
+          <ng-template #checked>
+            <ion-icon name="ios-checkbox" color="main"></ion-icon>
+          </ng-template>-->
+          <ion-checkbox [(ngModel)]="readed" style="pointer-events: none" color="main" class="self-checkbox"></ion-checkbox>
+
+          <ion-note color="third" style="display: inline-block; vertical-align: top;">我已阅读并同意 </ion-note>
+        </ion-col>
+
+        <ion-col (click)="goToAgreemnetPage()" style="color: #2455CA;text-decoration: underline;">
+          收银商户服务协议
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

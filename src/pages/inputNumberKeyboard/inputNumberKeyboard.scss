@@ -1,0 +1,47 @@
+page-inputNumberKeyboard{
+  .content-ios,
+  .scroll-content {
+    background-color: #ffffff;
+
+  }
+  .scroll-content {
+    background: #efefef;
+  }
+.header-item{
+span {
+  color: #BBBBBB!important;
+}
+}
+.keyboard-header{
+// padding: r(30px) r(30px) r(30px) r(30px);
+min-height: r(90px);
+margin: r(10px) r(30px) r(0px) r(30px);
+border: 1px solid #E5E5E5;
+height: 30%;
+text-align: center;
+span {
+  text-align: center;
+  margin: r(10px) r(0px) r(10px) r(0px);
+  padding: r(0px) r(10px) r(0px) r(10px); ;
+  font-size: r(50px);
+  // color: #BBBBBB!important;
+}
+.item {
+  padding-left: 0;
+}
+}
+.btn-selected{
+padding: r(10px) r(10px) r(10px) r(10px);
+margin: r(10px) r(10px) r(10px) r(10px);
+color: red;
+
+}
+.btn-foucouce{
+background-color: rgb(198, 214, 248)!important;
+}
+.font-size16{
+font-size: r(28px)!important;
+color: #BBBBBB;
+}
+
+}

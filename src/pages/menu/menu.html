@@ -1,0 +1,96 @@
+<!-- 侧边栏 -->
+
+
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>菜单</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="content-first">
+    <ion-item tappable (click)='showMacId()'>
+        <ion-thumbnail item-start>
+            <img class="staff-img" src="assets/imgs/user/cashier.png">
+        </ion-thumbnail>
+        <ion-label class="staff-name">
+            {{appShopping?.staff?.staffName}}：{{appShopping?.staff?.staffCode}}
+
+        </ion-label>
+    </ion-item>
+
+    <ion-list no-lines class="list-1">
+        <button menuClose ion-item (click)="openAboutUSPage(p)">
+            <span item-start class="list-icon"><img src="assets/imgs/contact/about.png" class="image-style "></span>
+            <span class="text-size-2 ">关于我们</span>
+        </button>
+        <button menuClose ion-item (click)="goCustomerPage()">
+            <span item-start class="list-icon"><img src="assets/imgs/public/default-user.png"
+                    class="image-style "></span>
+            <span class="text-size-2 ">会员管理</span>
+        </button>
+        <button ion-item (click)="checkVersion()" *ngIf="!isIOS">
+            <span item-start class="list-icon"><img src="assets/imgs/contact/receivables.png"
+                    class="image-style "></span>
+            <span class="text-size-2 ">检查更新</span>
+            <ion-note item-end color="node">{{appConstants.VERSION}}</ion-note>
+        </button>
+        <button menuClose ion-item (click)="goAPPStore()" *ngIf="isIOS">
+            <span item-start class="list-icon"><img src="assets/imgs/contact/receivables.png"
+                    class="image-style "></span>
+            <span class="text-size-2 ">前往App Store</span>
+            <ion-note item-end color="node">{{appConstants.VERSION}}</ion-note>
+        </button>
+
+        <button menuClose ion-item (click)="goToUpdateVersionLog()">
+            <span item-start class="list-icon"><img src="assets/imgs/contact/updatelog.png" class="image-style "></span>
+            <span class="text-size-2 ">版本更新日志</span>
+            <!-- <ion-note item-end color="node" style="font-size: 1.4rem;">当前版本{{appConstants.VERSION}}</ion-note> -->
+        </button>
+        <!-- *ngIf="!isIOS" -->
+        <button menuClose ion-item (click)="goToPrinterDevicePage()" *ngIf="!isIOS">
+            <span item-start class="list-icon"> <img src="assets/imgs/contact/manage.png" class="image-style "></span>
+            <span class="text-size-2 ">设备管理</span>
+            <!-- <img item-start src="assets/imgs/contact/manage.png" width="20" class="image-style ">
+            设备管理 -->
+        </button>
+        <!-- <ion-item>
+            <span item-start class="list-icon">
+                <ion-icon name="switch" class="image-style " style="color: #999999;"></ion-icon>
+            </span>
+            <span item-start class="text-size-2">模式切换</span>
+            <ion-toggle [(ngModel)]="appCache.Configuration.DP_MS" (tap)="toggleFun('DP_MS')"></ion-toggle>
+        </ion-item> -->
+        <ion-item>
+            <span item-start class="list-icon">
+                <ion-icon name="barcode" class="image-style " style="color: #999999;"></ion-icon>
+            </span>
+            <span item-start class="text-size-2">普通商品合并</span>
+            <ion-toggle [(ngModel)]="appCache.Configuration.DP_HB" (tap)="toggleFunHB('DP_HB')"></ion-toggle>
+        </ion-item>
+
+        <button menuClose ion-item (click)="goToSlabSetPage()">
+            <span item-start class="list-icon"> <img src="assets/imgs/contact/manage.png" class="image-style "></span>
+            <span class="text-size-2 ">显示设置</span>
+            <!-- <img item-start src="assets/imgs/contact/manage.png" width="20" class="image-style ">
+            设备管理 -->
+        </button>
+        <button menuClose ion-item (click)="goToSystemSetPage()">
+            <span item-start class="list-icon"> <img src="assets/imgs/contact/account-setting.png"
+                    class="image-style "></span>
+            <span class="text-size-2 ">系统设置</span>
+            <!-- <img item-start src="assets/imgs/contact/manage.png" width="20" class="image-style ">
+            设备管理 -->
+        </button>
+        <!-- <button ion-item (click)="chooseMode()">
+            <ion-label><span ion-text color="danger" class="red-span">*</span>模式切换</ion-label>
+            <ion-note color="node" item-end>{{parm.productDesc}}</ion-note>
+          </button> -->
+        <!-- menuClose -->
+        <button ion-item (click)="Logout()">
+            <span item-start class="list-icon">
+                <ion-icon name="exit-outline"></ion-icon>
+            </span>
+            <span class="text-size-2 ">退出登录</span>
+        </button>
+    </ion-list>
+</ion-content>

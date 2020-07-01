@@ -1,0 +1,48 @@
+page-wo-commodity-detail {
+    .content-ios,
+    .scroll-content {
+      background-color: transparent;
+    }
+    .scroll-content {
+      -webkit-overflow-scrolling: unset;
+    }
+    #detailMask.show {
+      opacity: 1;
+    }
+    #detailMask {
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+      opacity: 0;
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0px;
+    }
+    .container-bg {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      position: absolute;
+      bottom: 0;
+      // height: 50%;
+      left: 0;
+      z-index: 10;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      ion-scroll {
+          height: 100%;
+      }
+      .img-box {
+          max-height: r(800px);
+          overflow: hidden;
+      }
+    }
+
+}

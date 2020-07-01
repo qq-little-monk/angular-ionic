@@ -1,0 +1,19 @@
+page-img-detail {
+  .content-ios,
+  .scroll-content {
+    background-color: transparent;
+  }
+  .scroll-content {
+    -webkit-overflow-scrolling: unset;
+  }
+  .container-bg{
+    width: 100%;
+    height: 100%;
+  }
+    .img-box {
+        max-height: r(800px);
+        overflow: hidden;
+    }
+  
+
+}

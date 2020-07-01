@@ -1,0 +1,103 @@
+page-payMent {
+  // .no-scroll .scroll-content{overflow:hidden};
+  .scroll-content {
+    background: #f8fafc;
+     padding: 0px!important;
+  }
+  .list-customer{
+   padding: r(10px);
+  }
+  .list-top{
+    background: #ffffff;
+    .label-ios{
+      color: #BBBBBB;
+      font-size: r(24px);
+      margin: 0px 0px 0px 0;
+    }
+  }
+  .list-tow{
+    background: #ffffff;
+    .label-ios{
+      color: #BBBBBB;
+      font-size: r(24px);
+      margin: 0px 0px 0px 0;
+    }
+  }
+  .list-ios {
+    margin: -1px 0 0px;
+}
+.list-thr{
+  .label-ios{
+    color: #000000;
+    font-size: r(28px);
+    margin: 0px 0px 0px 0;
+  }
+}
+.receivable{
+  font-size: r(38px);
+  color: red;
+}
+.payMentList{
+  padding-top:r(4px) ;
+  .last-item{
+    text-align: right;
+  }
+  span{
+    font-size: r(46px);
+  }
+  .price-color{
+    color: red;
+  }
+}
+.payMent{
+  // padding-top:r(20px);
+ padding-left: r(10px);
+  .col {
+   padding:r(2px) 0 r(0px) 0 !important;
+  //  padding-top: r(20px);
+}
+  padding-top: r(30px);
+
+  .button {
+    background: #ffffff;
+    width: 98%;
+    font-size: r(36px);
+    border: 1px solid #E5E5E5;
+    height: r(100px)!important;
+    color: #000000
+ }
+ .btn-selected{
+  border: 2px solid color($colors,primary);
+ }
+}
+.div-button{
+  background: none;
+  height: 100%;
+  color: #FF7037;
+  // .ion-badge {
+  //   height: r(40px);
+  //   width: r(40px);
+  //   min-width: r(20px);
+  //   font-size: r(30px);
+  //   border-radius: 50%;
+  //   background: #FF7037;
+  //   color: #FFFFFF
+  //  }
+}
+
+
+number-keyboard .container .keyboard .keyboard-box-right {
+  padding-bottom: r(10px);
+
+}
+.keyboard{
+  // position: absolute;
+  // bottom: 0;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+ height: r(560px);
+}
+.note-ios {
+  color: #000000;
+}
+}

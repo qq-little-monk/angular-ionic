@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item class="header-item" no-lines>
+      <span class="text-size-2 ">{{salesDetail?.itemName}}</span>
+      <!-- <span class="text-size-2 " *ngIf="needPrice>0">还需收:￥{{needPrice}}</span><br> -->
+    </ion-item>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div style="height: 16%;">
+    <ion-list>
+      <ion-item>
+        <ion-label>退菜原因</ion-label>
+        <ion-input type="text" placeholder="请输入退菜原因" [(ngModel)]="returnReason" style="color: red;"></ion-input>
+        <button ion-button outline item-end (click)="reasonClick()">选择退菜原因</button>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div style="height: 20%;background-color: #fff;">
+    <div tappable class="keyboard-header jz-center">
+      <span class="jz-center" [ngClass]="{'btn-foucouce':item.isClear,'btn-selected': true}">{{item.number}}</span>
+    </div>
+  </div>
+  <div style="height: 64%;">
+    <number-keyboard [number]="item" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+</ion-content>

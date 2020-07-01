@@ -1,0 +1,50 @@
+<ion-content>
+  <div id="specMask" class="show"></div>
+  <div class="container">
+    <div class="keyboard">
+      <div class="keyboard-header">
+        <button ion-button clear tappable (click)="close()">
+          <ion-icon name="close" color="dark"></ion-icon>
+        </button>
+        <span>请输入支付密码</span>
+      </div>
+      <div class="keyboard-input">
+        <div class="input-box" >
+          <span>
+            <b *ngIf="str.length >= 1 ">●</b>
+          </span>
+          <span>
+            <b *ngIf="str.length >= 2 ">●</b>
+          </span>
+          <span>
+            <b *ngIf="str.length >= 3 ">●</b>
+          </span>
+          <span>
+            <b *ngIf="str.length >= 4 ">●</b>
+          </span>
+          <span>
+            <b *ngIf="str.length >= 5 ">●</b>
+          </span>
+          <span>
+            <b *ngIf="str.length >= 6 ">●</b>
+          </span>
+        </div>
+      </div>
+      <div class="keyboard-box">
+        <ion-row text-center>
+          <ion-col col-4 *ngFor="let num of keyboardNum" tappable (click)="addStr(num)">
+            {{num}}
+            <!-- <button ion-button clear></button> -->
+          </ion-col>
+          <ion-col col-4 class="b-col"></ion-col>
+          <ion-col tappable col-4 (click)="addStr(0)" >0</ion-col>
+          <ion-col tappable col-4 class="b-col" (click)="clear()">
+            <ion-icon name="close"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>

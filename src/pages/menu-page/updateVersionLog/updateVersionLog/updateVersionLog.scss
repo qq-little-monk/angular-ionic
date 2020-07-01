@@ -1,0 +1,133 @@
+page-updateVersionLogPage {
+  .content {
+    background: #F2F2F2;
+  }
+
+  .btn-pay-time {
+    font-size: 14px !important;
+    color: #FFFFFF !important;
+    background: transparent;
+    border: 1px solid #FFFFFF !important;
+    border-radius: 4px !important;
+    height: 24px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .item-block {
+    min-height: 30px;
+  }
+  
+  .btn-pay-time .activated {
+    color: #333333 !important;
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+  }
+  
+  .btn-selected {
+    border-color: #FFFFFF !important;
+    color: #333333 !important;
+    background: #FFFFFF;
+  }
+
+  .top-style {
+    color: #ffffff;
+    background: #0096ff;
+    border-bottom: 0px;
+  }
+
+  .toplist {
+    color: #ffffff;
+    border-bottom: 1px #0096ff !important;
+    background: #0096ff;
+  }
+
+  .toplist .item-block:not(:last-child) {
+    border-bottom: 0px #0096ff !important;
+  }
+
+  .item-inner {   
+    border-color: #FFFFFF !important;
+    border: none;
+  }
+  
+  .line-style {
+    color: #ffffff;
+    font-size: 16px;
+    width:100%; 
+    border-radius:25px; 
+    background-color:#bbbbbb;
+    text-align: left;
+  }
+
+  .border-right{
+    border-right: 1px solid #d6d6d6;
+  }
+
+  .number-style1 {
+    color: #FFFFFF;
+    font-size: 28px;
+  }
+
+  .number-style {
+    color: #ff6600;
+    font-size: 18px;
+  }
+
+  .title-style {
+    color:#FFFFFF;
+    font-size: 18px;
+    margin: 0;
+    background: #0096ff;
+  }
+
+  .order-style {
+    width: 15px;
+    color:#27a1f7;
+    font-size: 24px
+  }
+
+  .label-ios {
+    margin: 0;
+  }
+
+  .label-md {
+    margin: 0;
+  }
+
+  [col-2] {
+    padding: 0px;
+    display:-webkit-box;
+    -webkit-box-align: center;
+  }
+
+  .row-style {
+    margin-top: 11px; 
+    margin-bottom: 11px;
+  }
+
+  .item-style {
+    padding-left:5px;
+    padding-right:0px;
+  }
+
+  .img25 {
+    width: 25px;
+    height:25px;
+    margin-top:11px;
+  }
+  .img-center {
+    width: 25px;
+    height:25px;
+    margin: 0px 0px 0px 0;
+  }
+  .line-top{
+    height: 1px;
+    background-color: #d6d6d6;
+  }
+  .img-center1 {
+    display:-webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+  }
+}

@@ -1,0 +1,623 @@
+page-wo-shop-detail {
+
+  .content-ios,
+  .item-ios[detail-push] .item-inner,
+  button.item-ios:not([detail-none]) .item-inner,
+  a.item-ios:not([detail-none]) .item-inner {
+    background-image   : none;
+    padding-right      : 8px;
+    background-position: right 14px center;
+    background-position: right calc(14px + constant(safe-area-inset-right)) center;
+    background-position: right calc(14px + env(safe-area-inset-right)) center;
+    background-repeat  : no-repeat;
+    background-size    : 14px 14px;
+  }
+
+  .scroll-content {
+    background                : #efefef;
+    -webkit-overflow-scrolling: auto !important;
+
+    // padding-top: r(60px);
+  }
+
+  element.style {
+    height: 1047.6px;
+  }
+
+  .header-ios .toolbar-background {
+    border: none;
+  }
+
+  .ion-menu {
+    background: #ffffff;
+    color     : #000;
+  }
+
+  .active {
+    color: color($colors, primary) !important;
+  }
+
+  ion-buttons[start] {
+    .bar-button {
+      .icon {
+        color        : #666;
+        font-size    : r(45px);
+        padding-right: r(10px);
+      }
+    }
+  }
+
+  ion-buttons[end] {
+    margin: 0 r(20px);
+
+    .bar-button {
+      .icon {
+        color    : #666;
+        font-size: r(40px);
+      }
+    }
+
+    .bar-button {
+      padding-left: r(20px);
+    }
+  }
+
+  .shop-container {
+    padding: 0 r(30px);
+
+    .inner {
+      padding-top: r(30px);
+
+      .member-card {
+        border-radius: r(10px);
+        overflow     : hidden;
+        height       : r(100px);
+        margin       : r(30px) 0;
+      }
+    }
+
+    .notice {
+      margin-bottom: r(40px);
+    }
+
+    .shop-info-container {
+      position  : relative;
+      transition: all ease-in-out 300ms;
+      max-height: 0;
+      overflow  : hidden;
+
+      .shop-info-more {
+        height    : calc(100% - 0.8rem);
+        overflow-y: scroll;
+      }
+
+      span {
+        color: #666;
+      }
+
+      .list-header {
+        font-weight: 600;
+        font-size  : r(30px);
+        padding    : r(10px) 0;
+      }
+
+      .list-header,
+      .item {
+        border      : none !important;
+        padding-left: 0;
+      }
+
+      .item {
+        min-height: r(60px);
+
+        span[item-start] {
+          margin: 0;
+        }
+
+        .label {
+          margin: 0;
+        }
+      }
+
+      .item-inner {
+        padding-right: 0 !important;
+      }
+
+      ion-icon[item-end] {
+        margin-right: 0;
+      }
+
+      ion-icon[item-start] {
+        margin-right: r(16px);
+      }
+
+      .icon {
+        font-size  : r(36px);
+        color      : #999;
+        line-height: r(44px);
+      }
+
+      .shop-img {
+        max-height: r(300px);
+      }
+
+      .retract {
+        position: absolute;
+        width   : 100%;
+        bottom  : 0;
+        left    : 0;
+        height  : r(60px);
+
+        .icon {
+          font-size: r(60px);
+          color    : #999;
+        }
+      }
+    }
+  }
+
+  .container {
+    position  : sticky;
+    position  : -webkit-sticky;
+    width     : 100%;
+    overflow  : hidden;
+    transition: all 0.3s;
+
+
+    ion-item-divider[sticky] {
+      top         : r(-2px);
+      background  : #fff;
+      font-size   : r(22px);
+      color       : #666;
+      padding-left: 0;
+
+      ion-icon {
+        font-size   : r(28px);
+        margin-right: 0;
+        line-height : r(44px);
+        text-align  : left;
+      }
+    }
+
+    .indexed-container {
+      // background: #f5f9fc;
+      // padding-bottom: 60px;
+      -webkit-box-flex: 0;
+      -webkit-flex    : 0 0 23%;
+      -ms-flex        : 0 0 23%;
+      flex            : 0 0 23%;
+      width           : 23%;
+      max-width       : 23%;
+    }
+
+    .custom-scroll {
+      overflow-y                : scroll;
+      height                    : 100%;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    .dish-canScroll {
+      .scroll-content {
+        overflow-y                : scroll !important;
+        height                    : 100%;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+
+
+
+    .deshe-container {
+
+      -webkit-box-flex: 0;
+      -webkit-flex    : 0 0 77%;
+      -ms-flex        : 0 0 77%;
+      flex            : 0 0 77%;
+      width           : 77%;
+      max-width       : 77%;
+      overflow        : hidden;
+
+      .scroll-content {
+        background: #ffffff;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+
+    .indexed {
+      padding   : r(32px) r(30px);
+      text-align: center;
+      position  : relative;
+
+      span {
+        width    : 100%;
+        font-size: r(28px);
+        display  : block;
+        word-wrap: break-word;
+        color    : #666;
+        font-size: 500;
+      }
+
+      .indexed-num-badge {
+        position   : absolute;
+        right      : r(6px);
+        top        : r(4px);
+        width      : r(30px);
+        height     : r(30px);
+        line-height: r(30px);
+        font-size  : r(16px);
+        color      : #ffffff;
+      }
+    }
+
+    .indexedActivate {
+      background : #fff;
+      // border:2px solid;
+      border-left: 4px solid #ff8118;
+
+      span {
+        color      : #ff8118;
+        font-weight: 600;
+      }
+    }
+
+    .list {
+      // margin-bottom: r(140px);
+
+      .item-block {
+        margin-top  : r(10px);
+        padding-left: 0;
+        align-items : start !important;
+      }
+
+      .specification {
+        font-size: r(20px);
+      }
+
+      ion-thumbnail {
+        width        : r(140px) !important;
+        height       : r(140px) !important;
+        margin-right : r(20px);
+        margin-left  : r(20px);
+        border-radius: r(10px);
+        overflow     : hidden;
+
+        img {
+          width : 100%;
+          height: 100%;
+        }
+      }
+
+      h2 {
+        margin-bottom: 0;
+      }
+
+      .dish-label {
+        min-height   : r(140px);
+        position     : relative;
+        margin-bottom: 0;
+      }
+
+      .member-tip {
+        background   : #ff881d;
+        color        : #fff;
+        font-size    : r(20px);
+        width        : r(32px);
+        height       : r(32px);
+        border-radius: r(6px);
+        display      : inline-block;
+        text-align   : center;
+      }
+
+      .discount {
+        font-size    : r(20px);
+        color        : #ff881d;
+        padding-right: r(10px);
+      }
+
+      .operation {
+        position: absolute;
+        bottom  : 0;
+        width   : 100%;
+      }
+
+      .simper-btn {
+        border-radius: 50%;
+        height       : r(50px);
+        width        : r(50px);
+        line-height  : r(50px);
+        min-height   : r(50px);
+        padding      : r(40px);
+        text-align   : center;
+        background   : none;
+
+        ion-icon {
+          font-size: r(50px);
+        }
+      }
+
+      .spec-btn {
+        // position: absolute;
+        // z-index: 100;
+        // bottom: r(10px);
+        // right: r(10px);
+        border-radius: r(40px);
+        height       : r(50px);
+        line-height  : r(50px);
+        min-height   : r(50px);
+
+        margin: r(20px) r(0px) 0 r(20px);
+
+        span {
+          font-size: r(24px);
+        }
+      }
+    }
+  }
+
+  .noScrolling {
+    .scroll-content {
+      overflow-y: hidden;
+    }
+  }
+
+  ion-footer {
+    padding         : 0 r(30px) r(30px);
+    background-color: #fff;
+  }
+
+  a ion-label,
+  button ion-label {
+    pointer-events: inherit;
+    margin-bottom : 0px;
+  }
+
+  .ion-badge-bz {
+    //水印
+    position        : absolute;
+    top             : r(20px);
+    right           : r(0px);
+    z-index         : 1000;
+    // right: 10px;
+    // top: -webkit-calc((100% - height) / 2);
+    // top: -moz-calc((100% - height) / 2);
+    // top: -ms-calc((100% - height) / 2);
+    // top: calc((100% - height) / 2);
+    // position: absolute;
+    // background: #999;
+    opacity         : 0.6;
+    transform       : rotate(30deg);
+    display         : inline-block;
+    font-size       : r(24px);
+    color           : #dd0404;
+    background-color: rgba(255, 255, 255, 0);
+    border          : 1px solid #dd0404 !important;
+    border-radius   : 0px;
+  }
+
+  ion-footer {
+    // padding: 0 r(30px) r(30px);
+    padding         : 0;
+    background-color: #fff;
+  }
+
+  .spu-num {
+    width      : r(30px);
+    height     : r(30px);
+    line-height: r(30px);
+    color      : #ffffff;
+    position   : absolute;
+    font-size  : r(20px);
+    top        : r(0px);
+    right      : r(-0px);
+  }
+
+  .p-inline {
+    display : inline;
+    // color: red;
+  }
+
+  .p-color {
+    color: red;
+  }
+
+  .qudan {
+    position     : absolute;
+    right        : 0px;
+    bottom       : r(4px);
+    font-size    : r(16px);
+    color        : #666666;
+    padding      : r(4px);
+    border-radius: 50%;
+    background   : #efefee;
+    // border:r(1px) solid #000;
+  }
+
+  .tips {
+    position : absolute;
+    z-index  : 101;
+    right    : r(-24px);
+    top      : r(4px);
+    padding  : 0 r(30px);
+    transform: rotate(45deg);
+    color    : #fff;
+    font-size: r(20px);
+  }
+
+  /* 无图大屏模式下的tips */
+  .tips-noimg {
+    padding: 0 r(15px);
+    right  : r(-1.5px);
+  }
+
+  .tips.o {
+    background: orange;
+  }
+
+  .tips-left {
+    position  : absolute;
+    left      : r(-24px);
+    top       : r(0px);
+    padding   : r(5px) r(30px) r(5px);
+    transform : rotate(-45deg);
+    color     : #fff;
+    // height: r(30px);
+    font-size : r(20px);
+    text-align: center;
+  }
+
+  /* 无图大屏模式下左边的tips */
+  .tips-left-noimg {
+    padding: r(0px) r(15px) r(0px);
+    left   : r(-1.5px);
+  }
+
+  .tips-left.o {
+    background: orange;
+  }
+
+  .soldoutNum-span {
+    color           : red;
+    font-size       : r(22px);
+    background-color: #efefef;
+    padding         : r(4px) r(10px) r(4px) r(10px);
+    border-radius   : r(6px);
+    color           : #333333;
+    text-align      : center;
+    margin-right    : r(20px);
+    width           : 100%;
+  }
+
+  //平板大屏 dpdpdpdpdppd
+  .isShowSlab1 {
+    // display: flex;
+    float    : left;
+    width    : 100%;
+    height   : r(350px);
+    padding  : r(10px) r(10px) r(40px) r(10px) !important;
+    // margin: 0;
+    // height: 30%;
+  }
+
+  .isShowSlab2 {
+    // display: flex;
+    float    : left;
+    width    : 50%;
+    height   : r(300px);
+    padding  : r(10px) r(10px) r(20px) r(10px) !important;
+    // height: 30%;
+  }
+
+  .isShowSlab3 {
+    // display: flex;
+    float     : left;
+    width     : 33.33%;
+    height    : r(300px);
+    padding   : r(10px) r(10px) r(20px) r(10px) !important;
+    // height: 30%;
+    // padding: 0px!important;
+  }
+
+  .isShowSlab4 {
+    // display: flex;
+    float     : left;
+    width     : 25%;
+    height    : r(300px);
+    padding   : r(10px) r(10px) r(20px) r(10px) !important;
+    // margin: 0;
+    // padding: 0;
+    // height: 30%;
+  }
+
+  /* 无图的高度 */
+  .isShowSlabNoImg {
+    height : r(130px);
+    padding: r(10px) r(10px) r(20px) r(10px) !important;
+  }
+
+  .slab-item-img {
+    width   : 100% !important;
+    height  : 75% !important;
+    position: relative;
+
+    img {
+      width : 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  /* 无图模式上半部分占比 */
+  .slab-item-no-img {
+    height          : 50% !important;
+    background-color: rgba(88, 8, 8, 0.5) !important;
+  }
+
+  .slab-item-img-top {
+    position        : absolute;
+    top             : r(10px);
+    left            : r(10px);
+    display         : block;
+    background-color: rgba(0, 0, 0, 0);
+    // opacity: 0.4;
+    color           : #999999 !important;
+
+    h2 {
+      padding         : r(5px);
+      border-radius   : r(5px);
+      background-color: rgba(0, 0, 0, 0.2);
+      //color: rgb(71, 60, 226)!important;
+      color           : rgb(255, 255, 255) !important;
+      font-size       : r(20px);
+    }
+
+    span {
+      padding         : r(5px);
+      border-radius   : r(5px);
+      background-color: rgba(0, 0, 0, 0.2);
+      color           : #ffffff;
+      font-size       : r(18px);
+    }
+
+    // .soldoutNum{
+    //   color: red!important;
+    // }
+  }
+
+  .slab-item-endbutton {
+    padding-top     : 0;
+    margin-top      : 0;
+    display         : block;
+    width           : 100%;
+    height          : 25% !important;
+    background-color: blanchedalmond !important;
+
+    .slab-spec-btn {
+      border-radius: r(25px);
+      height       : r(50px);
+      // width: r(50px);
+      line-height  : r(50px);
+      min-height   : r(50px);
+      max-width    : 100%;
+      max-height   : 40%;
+      padding      : r(25px);
+      margin-top   : r(10px);
+      text-align   : center;
+
+      // background: none;
+      span {
+        font-size: r(16px);
+      }
+    }
+  }
+
+  // 无图模式下下半部分占比
+  .slab-item-endbutton-noimg {
+    height: 60% !important;
+  }
+
+  // dpdpdpdpdpdpdpdpdpdpdpddd
+
+  // .isShowSlab-label{
+  //   display: flex;
+  //   float: left;;
+  //   width: 100%;
+  // }
+}

@@ -1,0 +1,108 @@
+<!-- 
+  Generated template for the PrinterDeviceWifiPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar mode="ios">
+    <ion-title text-center>
+      {{device.id != null?device.printerTypeDesc:'Wi-Fi打印机'}}
+    </ion-title>
+
+    <ion-buttons end *ngIf="device.id != null">
+      <button ion-button clear (click)="changePrinter()">
+        更换打印机
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid padding class="wifi-addr">
+    <ion-row padding-bottom>
+      请输入打印机IP地址
+    </ion-row>
+    <ion-row>
+      <ion-col align-self-end>
+        <ion-input text-center type="tel" maxlength="3" [(ngModel)]="address1" #inputaddress1 (keyup)="checkValue(address1,1,$event)"
+          class="bborder"></ion-input>
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col align-self-end>
+        <ion-input text-center type="tel" maxlength="3" [(ngModel)]="address2" #inputaddress2 (keyup)="checkValue(address2,2,$event)"
+          class="bborder"></ion-input>
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col align-self-end>
+        <ion-input text-center type="tel" maxlength="3" [(ngModel)]="address3" #inputaddress3 (keyup)="checkValue(address3,3,$event)"
+          class="bborder"></ion-input>
+      </ion-col>
+      <ion-col col-auto align-self-end no-padding class="point">
+        .
+      </ion-col>
+      <ion-col align-self-end>
+        <ion-input text-center type="tel" maxlength="3" [(ngModel)]="address4" #inputaddress4 (keyup)="checkValue(address4,4,$event)"
+          class="bborder"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid padding-horizontal padding-top *ngIf="printerType != '1'&&printerType != '4'" class="printer-type">
+    <ion-row>打印类型</ion-row>
+    <ion-row radio-group [(ngModel)]="device.printerModel">
+      <ion-col ion-item>
+        <ion-label>分单打印</ion-label>
+        <ion-radio mode="md" color="main" value="{{config.PRINTER_MODEL_SPLIT}}" checked="{{device.printerModel==config.PRINTER_MODEL_SPLIT?true:false}}"></ion-radio>
+      </ion-col>
+
+      <ion-col ion-item>
+        <ion-label>合并打印</ion-label>
+        <ion-radio mode="md" color="main" value="{{config.PRINTER_MODEL_MERGE}}" checked="{{device.printerModel==config.PRINTER_MODEL_MERGE?true:false}}"></ion-radio>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="div-botton"> </div>
+  <div class="div-botton"> </div>
+  <ion-list no-lines>
+    <ion-item>
+      <span item-start style="margin: 3px 7px 0px 0px"><img src="assets/imgs/shiftturnoverdetail/tb.png" class="img-center" /></span>
+      <span class="text-size-2 ">打印机规格</span>
+    </ion-item>
+
+    <ion-list radio-group [(ngModel)]="device.size">
+      <!-- <ion-row no-lines> -->
+      <ion-item align-items-center no-padding no-lines style="padding-left:15px;">
+        <ion-label>58mm</ion-label>
+        <ion-radio value="1" checked></ion-radio>
+      </ion-item>
+      <ion-item align-items-center no-padding no-lines style="padding-left:15px;">
+        <ion-label>80mm</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+      <!-- </ion-row> -->
+    </ion-list>
+  </ion-list>
+  <div *ngIf="device.id" padding="">
+    <button ion-button block no-margin color="self-yellow" outline (click)="deleteDevice()" style="width: 40%; margin: 0 auto; border-radius: 4px;">删除打印机</button>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col no-padding>
+      <button ion-button no-margin color="white" style="background-color:coral " full (click)="testPrint()" [disabled]="retry">测试打印{{retry ? '(' +
+        timeCount +')' : ''}}</button>
+    </ion-col>
+
+    <ion-col no-padding>
+      <button ion-button no-margin color="self-yellow" full (click)="addDevice()">保存</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

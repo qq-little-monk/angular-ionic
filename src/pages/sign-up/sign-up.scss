@@ -1,0 +1,39 @@
+page-sign-up {
+  .div-con:not(:last-child) {
+    border-bottom: 8px solid #f2f2f2;
+  }
+
+  .list-con{
+    border: 1px solid #EFEFEF;
+    border-radius: 2px;
+  }
+
+  .list-con ion-row:not(:last-child){
+    border-bottom: 1px solid #EFEFEF;
+  }
+
+  .list-con img{
+    width: 22px;
+    vertical-align: middle;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .button {
+    border-radius: 4px;
+  }
+
+  .bottom-btn {
+    padding: 0 9px 5px !important;
+  }
+
+  ion-icon {
+    font-size: 1.4em;
+  }
+
+  .button-small {
+    line-height: 2.1em;
+  }
+}

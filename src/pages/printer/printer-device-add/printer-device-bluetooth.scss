@@ -1,0 +1,42 @@
+page-printer-device-bluetooth {
+  .content {
+    background-color: #f2f2f2;
+  }
+
+  .item-block, .list-ios > .item-block:last-child{
+    border-bottom: 1px solid #EFEFEF !important;
+  }
+
+  .item-inner {
+    border: none !important;
+  }
+
+  .print-device .item{
+    color: #999999;
+  }
+
+  .footer {
+    .button {
+      height: r(96px);
+      font-size: r(32px);
+    }
+  }
+
+  .radio-icon {
+    opacity: 0;
+  }
+
+  .radio {
+    position: relative;
+    font-family: "ionIcons";
+  }
+
+  .item-radio-checked .radio:after {
+    content: "\f149";
+    position: absolute;
+    font-size: 24px;
+    top: 50%;
+    margin-top: -12px;
+    color: #0096ff;
+  }
+}

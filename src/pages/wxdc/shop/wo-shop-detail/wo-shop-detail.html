@@ -1,0 +1,194 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start *ngIf="!appShopping.salesTable.id">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons start *ngIf="appShopping.salesTable.id">
+      <button ion-button>
+        {{appShopping.salesTable.tableName}}{{appShopping.salesTable.virtualId?'('+appShopping.salesTable.virtualId+')':''}}
+      </button>
+    </ion-buttons>
+    <ion-title text-center>{{appShopping.salesTable?.salesId?'加菜':'点菜'}}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="addTempGood()">
+            <span class="qudan">临</span>
+            <ion-icon name="wobianji"></ion-icon>
+          </button>
+      <button ion-button icon-only navPush="WoSearchPage">
+        <ion-icon name="wosousuo"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="goToTakeOrderTabPage()">
+        <span class="qudan">取</span>
+        <ion-icon name="wodingdan"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="tableService.refreshData()">
+        <ion-icon name="refresh-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<!-- (ionScroll)="scrollHandler($event)" -->
+<ion-content #ionContent [ngClass]="{'noScrolling': noScrolling}">
+  <!-- 
+  <div class="shop-info-container" #shopInfoContainer>
+    <div text-center class="retract" (click)="toggleShopHeight()">
+      <ion-icon name="woshouqi"></ion-icon>
+    </div>
+  </div> -->
+
+
+  <div class="container full-height" #container *ngIf="!showShopInfo">
+    <ion-grid class="full-height" no-padding>
+      <ion-row class="full-height">
+        <!-- 左 -->
+        <ion-col no-padding class="full-height indexed-container">
+          <div class="groupScroll" [ngClass]="{'custom-scroll': canScroll}">
+            <div tappable class="indexed" *ngFor="let item of appShopping.comTypeList;let i = index"
+              (click)="selectType(item)" [class.indexedActivate]="item.id == checkedType.id">
+              <span class="ion-text-wrap ">{{item.cateName}}</span>
+              <span class="num-badge indexed-num-badge"
+                *ngIf="appShopping.typeOfCarComMap[item.id]&&appShopping.typeOfCarComMap[item.id]>0">{{appShopping.typeOfCarComMap[item.id]}}</span>
+            </div>
+          </div>
+        </ion-col>
+        <!-- 右 -->
+        <ion-col no-padding class="full-height deshe-container">
+          <!-- <div class="dish-scroll" [ngClass]="{'custom-scroll': canScroll && !noScrolling}" #desheScroll
+            (scroll)="desheScrollFun($event)"> -->
+          <ion-content class="dish-canScroll" #desheScroll>
+            <!-- [virtualScroll]="showItemList" -->
+            <ion-list no-lines>
+              <ng-container *ngFor="let dish of pageLimitData; let i = index">
+                <button ion-item no-lines (click)="selectAddToCar(dish)" #itembutton name="itembutton"
+                  *ngIf="!configuration.DP_DP">
+                  <ion-thumbnail item-start (click.stop)="util.showImg(dish.logoPath)" *ngIf="!showNoImgMode">
+                    <img [src]="dish.logoPath|imgUrl:'dish'">
+                    <div class="tips-left o " *ngIf="dish.measureFlag=='Z'">称</div>
+                  </ion-thumbnail>
+                  <ion-label class="dish-label">
+                    <div class="tips o" *ngIf="dish.soldoutStatus=='1'&&dish.soldoutNum==0">沽</div>
+
+                    <h2>{{dish.itemName}}</h2>
+                    <p>
+                      <span class="m-t-5 soldoutNum-span" *ngIf="dish.minCount">{{dish.minCount?dish.minCount+'份起售':''}}
+                      </span>
+                      <span class="m-t-5 soldoutNum-span"
+                        *ngIf="dish&&dish.soldoutStatus=='1'&&dish.soldoutNum">剩{{util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id])>0?util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id]):0}}</span>
+                    </p>
+                    <div class="operation">
+                      <ion-row justify-content-between align-items-center>
+                        <ion-col col-6 no-padding align-items-center class="flex">
+                          <!-- <span class="symbol">￥</span> -->
+                          <span class="default-price">￥{{dish.tmpIsDefaultSku?.retailPrice}}</span>
+                          <!-- <del>￥{{dish.tmpIsDefaultSku?.retailPrice}}</del> -->
+                        </ion-col>
+                        <ion-col col-6 no-padding text-right>
+                          <!-- <order-btn  *ngIf="shopSer.isSimplCom(dish)" *ngIf="shopSer.isSimplCom(dish)">
+                        </order-btn> -->
+                          <button class="simper-btn" ion-button (click.stop)="selectSpec(dish)"
+                            *ngIf="shopSer.isSimplCom(dish)">
+                            <!-- <ion-icon name="add"></ion-icon> -->
+                            <ion-icon color="primary" name="add-circle" #addEle></ion-icon>
+                          </button>
+                          <button class="spec-btn" ion-button (click.stop)="selectSpec(dish)"
+                            *ngIf="!shopSer.isSimplCom(dish)">选规格
+                          </button>
+                          <span class="num-badge  spu-num"
+                            *ngIf="appShopping.spuOfCarComMap[dish.id]&&appShopping.spuOfCarComMap[dish.id]>0">{{appShopping.spuOfCarComMap[dish.id]}}</span>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-label>
+                  <!-- <ion-badge item-end color="main" class="ion-badge-bz" *ngIf="shopSer.isHave(dish)">已点
+                </ion-badge> -->
+                </button>
+                <!-- /////////////////////////////////// configuration.DP_DPNUM大屏显示开启-->
+                <div class="{{util.selectShowItemNum(configuration.DP_DPNUM)}}"
+                  [ngClass]="{'isShowSlabNoImg':showNoImgMode}" *ngIf="configuration.DP_DP"
+                  (click)="selectAddToCar(dish)" style="position:relative;">
+                  <div class="slab-item-img" [ngClass]="{'slab-item-no-img':showNoImgMode}">
+                    <img [src]="dish.logoPath|imgUrl:'dish'" *ngIf="!showNoImgMode">
+                    <div class="slab-item-img-top">
+                      <h2>{{dish.itemName}}</h2>
+                      <div>
+                        <span *ngIf="dish.minCount">{{dish.minCount?dish.minCount+'份起售':''}}
+                          <br />
+                        </span>
+                        <span class="soldoutNum"
+                          *ngIf="dish&&dish.soldoutStatus=='1'&&dish.soldoutNum">剩{{util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id])>0?util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id]):0}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tips o" [ngClass]="{'tips-noimg':showNoImgMode}"
+                    *ngIf="dish.soldoutStatus=='1'&&dish.soldoutNum==0">沽</div>
+                  <div class="tips-left o " [ngClass]="{'tips-left-noimg':showNoImgMode}" *ngIf="dish.measureFlag=='Z'">
+                    称</div>
+                  <div class="slab-item-endbutton" [ngClass]="{'slab-item-endbutton-noimg':showNoImgMode}">
+                    <ion-row justify-content-between align-items-center>
+                      <ion-col col-6 no-padding align-items-center>
+                        <span class="default-price">￥{{dish.tmpIsDefaultSku?.retailPrice}}</span>
+                      </ion-col>
+                      <ion-col col-6 no-padding text-right>
+                        <button class="simper-btn " ion-button (click.stop)="selectSpec(dish)"
+                          *ngIf="shopSer.isSimplCom(dish)">
+                          <ion-icon color="primary" name="add-circle" #addEle></ion-icon>
+                        </button>
+                        <button class="slab-spec-btn" ion-button (click.stop)="selectSpec(dish)"
+                          *ngIf="!shopSer.isSimplCom(dish)">选规格
+                        </button>
+                        <span class="num-badge  spu-num"
+                          *ngIf="appShopping.spuOfCarComMap[dish.id]&&appShopping.spuOfCarComMap[dish.id]>0">{{appShopping.spuOfCarComMap[dish.id]}}</span>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </div>
+
+
+              </ng-container>
+              <!-- </ion-item-group> -->
+            </ion-list>
+            <!-- <div style="height: 50px"></div> -->
+            <!-- </ion-list> -->
+            <!-- <div class="no-detail" *ngIf="showItemList.length == 0">
+              <img src="assets\imgs\public\default-dish01.png" width="22%">
+              <p>暂无记录</p>
+            </div> -->
+            <ion-label *ngIf="pageLimit>= showItemList.length" style="color: #999999;width: 100%;" text-center> 没有更多数据
+            </ion-label>
+
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+              <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-content>
+
+          <!-- </div> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+</ion-content>
+<ion-footer *ngIf="!showShopInfo">
+  <!-- <div class="flex">
+    <div class="footer-inner flex ion-justify-content-between ion-align-items-center">
+      <span class="font-13">已优惠￥12</span>
+      <div>
+        <span class="font-13 p-r-5">合计</span>
+        <span class="font-18 blod">￥12</span>
+      </div>
+    </div>
+    <button ion-button disabled-button>提交订单</button>
+  </div> -->
+  <wo-cart-tab #carTab (hangOrder)="toHangOrder()" (stayHangOrder)="stayEntryOrders()" (openModal)="openCartModal()"
+    (placeOrder)="placeOrder()" (addItemOfOrder)="addItemOfOrder()">
+  </wo-cart-tab>
+</ion-footer>
+<!-- <wo-cart-modal [showCardOp]="'true'" [(ngModel)]="showCartModal" (ionCancle)="closeCartModal()"
+  (placeOrder)="placeOrder()"></wo-cart-modal> -->

@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar class="bar-positive nav-title-slide-ios7">
+        <ion-title text-center>菜品详情</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <img class="productionImg" src="../../../../assets/imgs/shop/shop_bg.png"/>
+        <ion-card-content>
+            <ion-card-title class="productionName">
+                {{productionName}}
+            </ion-card-title>
+            <p class="productionIntroduce">
+                &yen;{{productionIntroduce}}
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+    <button ion-button icon-center color="#ffb91c" (click)="selectSpec($event)">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+</ion-content>

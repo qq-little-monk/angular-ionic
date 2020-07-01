@@ -1,0 +1,18 @@
+page-change-order-tab  {
+  .scroll-content {
+    background: #ffffff;
+  }
+  .div-top{
+    padding-top: r(10px);
+    .row-top{
+      padding-left: r(10px);
+      padding-right: r(10px);
+    }
+    .button-col{
+      width: 30%;
+      margin: r(10px) r(10px) r(10px) r(10px);
+      padding:  r(20px) r(20px) r(20px) r(20px);
+      font-size: r(36px);
+    }
+  }
+}

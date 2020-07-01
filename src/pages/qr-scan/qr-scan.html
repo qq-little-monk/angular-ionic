@@ -1,0 +1,71 @@
+<!--
+  Generated template for the QrScanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title text-center>微信收款</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="cancelOrder()">作废</button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="page-scan-camera-ready">
+    <div class="guides">
+      <img class="svg qr-scan-guides" src="assets/imgs/qr-scan-guides.svg">
+    </div>
+    <!--<div class="scanner-controls">-->
+      <!--<span class="icon-flash lightActive" (click)="toggleLight()"></span>-->
+      <!--<span class="icon-camera-toggle cameraToggleActive" (click)="toggleCamera()"></span>-->
+    <!--</div>-->
+  </div>
+
+
+  <!--<div class="page-scan-has-problems">-->
+    <!--<div class="header" padding>-->
+      <!--<div class="image-container">-->
+        <!--<img src="assets/imgs/ico-receive.svg"/>-->
+      <!--</div>-->
+      <!--<div class="title" padding translate>扫描二维码</div>-->
+    <!--</div>-->
+    <!--<div class="subtitle" translate>You can scan bitcoin addresses, payment requests, paper wallets, and more.</div>-->
+    <!--<div class="body">-->
+      <!--<div padding>-->
+        <!--<div translate>Enable the camera to get started.</div>-->
+        <!--<div translate>Enable camera access in your device settings to get started.</div>-->
+        <!--<div translate>Please connect a camera to get started.</div>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<button ion-button outline translate>Allow Camera Access</button>-->
+        <!--<button ion-button outline translate>Open Settings</button>-->
+        <!--<button ion-button outline translate>Retry Camera</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="page-scan-loading-camera" *ngIf="currentState == scannerStates.loading"></div>-->
+  <!--<div class="page-scan-camera-ready" *ngIf="currentState == scannerStates.visible">-->
+  <!--<div class="guides">-->
+  <!--<img class="svg qr-scan-guides" src="assets/img/qr-scan-guides.svg">-->
+  <!--</div>-->
+  <!--<div class="scanner-controls">-->
+  <!--<span *ngIf="canEnableLight" class="icon-flash" [ngClass]="{'active': lightActive}" (click)="toggleLight()"></span>-->
+  <!--<span *ngIf="canChangeCamera" class="icon-camera-toggle" [ngClass]="{'active': cameraToggleActive}" (click)="toggleCamera()"></span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="page-scan-has-problems not-supported-message" *ngIf="notSupportedMessage">-->
+  <!--{{notSupportedMessage}}-->
+  <!--</div>-->
+</ion-content>

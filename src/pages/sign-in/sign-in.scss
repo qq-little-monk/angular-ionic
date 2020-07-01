@@ -1,0 +1,119 @@
+page-sign-in {
+  // #f87c38
+  background           : url(../assets/imgs/sign/bg.jpg) no-repeat center center fixed !important;
+  background-repeat    : no-repeat;
+  background-size      : cover !important;
+  background-attachment: fixed;
+
+  .aibao-bg {
+    // background-color: #adeb04 !important;
+    // background: url(../assets/imgs/sign/bg.jpg) no-repeat center center fixed!important;
+    // background-repeat:no-repeat ;
+    // background-size:cover!important;
+    // background-attachment: fixed;
+    overflow: scroll;
+    height  : 100%;
+    width   : 100%;
+    padding : 0px;
+    margin  : 0px;
+
+
+  }
+
+  .login-form-hander {
+    padding-top   : r(20px);
+    font-size     : r(50px);
+    padding-bottom: r(10px);
+  }
+
+  .login-form {
+    background    : #ffffff;
+    //  margin: r(20px) r(20px) r(20px) r(20px);
+    width         : 80%;
+    // height: 35%;
+    // height: r(500px);
+    // position: absolute;
+    height        : r(460px);
+    //  margin-top: r(300px);
+    margin-top    : 10%;
+    margin-right  : 10%;
+    margin-left   : 10%;
+    border-radius : 10px;
+
+    .login-form-list {
+      padding-top: r(30px);
+    }
+
+    img {
+      width : r(50px);
+      height: r(50px);
+    }
+
+    ion-input {
+      font-size: r(30px);
+    }
+
+    .login-form-botton {
+      // padding-bottom: r(30px);
+      // position: absolute;
+      width            : 80%;
+      margin-right     : 10%;
+      margin-left      : 10%;
+      margin-top       : r(30px);
+      // margin-top: 5%;
+      // margin-bottom    : r(30px) !important;
+      // padding-bottom:0%!important;
+      color            : #000;
+
+      .button {
+        background: #fdbc01;
+      }
+    }
+
+  }
+
+  .bottom-buttons {
+    //  position: absolute;
+    // padding-bottom: 15%;
+    // margin-top    : r(180px);
+    margin-top: 10%;
+    //  background: none!important;
+    height        : 20%;
+    width         : 90%;
+    margin-right  : 5%;
+    margin-left   : 5%;
+
+    button {
+      background: none;
+    }
+
+    .row-button {
+      padding-left : r(20px);
+      padding-right: r(16px);
+    }
+
+    .col {
+      border       : 1px solid #000000;
+      margin-right : 2%;
+      margin-left  : 2%;
+      padding      : 5px;
+      background   : none;
+      //  height: 100%;
+      border-radius: r(6px);
+    }
+
+    .isLine-ip {
+      background: #fdbc01 !important;
+      border    : 0px solid #ffffff;
+    }
+
+    .login-text {
+      font-size: r(46px) !important;
+    }
+  }
+
+  // .scroll-content {
+  //   background: #ceeb2e;
+  // }
+
+}

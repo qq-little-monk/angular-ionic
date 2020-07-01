@@ -1,0 +1,34 @@
+page-printer-kt-list {
+  .content {
+    background: #f2f2f2;
+  }
+
+  .item-block, .list-ios > .item-block:last-child{
+    border-bottom: 1px solid #EFEFEF !important;
+  }
+
+  .item-inner {
+    border: none !important;
+  }
+
+  .footer {
+    .button {
+      height: 3.8rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  .no-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    height: 100%;
+
+    p {
+      color: #0096ff !important;
+      font-size: 1.6rem !important;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+<!--
+  Generated template for the WoSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar #searchbar [(ngModel)]="searchText" clearIcon='close-circle' [formControl]="example"
+      placeholder="名称/条码/拼音码/辅助码" id="input" (ionCancel)="search()">
+    </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button (click)="search()">搜索</button>
+      <button item-end ion-button clear (click)="goToQr()" *ngIf="!commodity?.id" style="font-size:18px">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ng-container *ngFor="let dish of comSpuList">
+      <button no-lines ion-item no-lines (click)="selectAddToCar(dish)" *ngIf="!configuration.DP_DP">
+        <ion-thumbnail item-start (click.stop)="util.showImg(dish.logoPath)">
+          <img [src]="dish.logoPath|imgUrl:'dish'">
+          <div class="tips-left o " *ngIf="dish.measureFlag=='Z'">称</div>
+        </ion-thumbnail>
+        <ion-label class="dish-label">
+          <div class="tips o" *ngIf="dish.soldoutStatus=='1'&&dish.soldoutNum==0">沽</div>
+          <h2>{{dish.itemName}}</h2>
+          <p>
+            <span class="m-t-5 soldoutNum-span" *ngIf="dish.minCount">{{dish.minCount?dish.minCount+'份起售':''}}
+            </span>
+            <span class="m-t-5 soldoutNum-span"
+              *ngIf="dish&&dish.soldoutStatus=='1'&&dish.soldoutNum">剩{{util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id])>0?util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id]):0}}</span>
+          </p>
+          <!-- <p class="m-t-5 p-inline" *ngIf="dish.minCount">{{dish.minCount?dish.minCount:1}}份起售</p>
+        <p class="m-t-5  p-inline p-color" *ngIf="dish.soldoutNum!=null">
+          剩{{util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id])>0?util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id]):0}}</p> -->
+          <div class="operation">
+            <ion-row justify-content-between align-items-center>
+              <ion-col col-6 no-padding align-items-center class="flex">
+                <span class="symbol">￥</span>
+                <span class="default-price">{{dish.tmpIsDefaultSku?.retailPrice}}</span>
+              </ion-col>
+              <ion-col col-6 no-padding text-right>
+                <button class="simper-btn " ion-button (click.stop)="selectSpec(dish)" *ngIf="shopSer.isSimplCom(dish)">
+                  <!-- <ion-icon name="add"></ion-icon> -->
+                  <ion-icon color="primary" name="add-circle" #addEle></ion-icon>
+                </button>
+                <button class="spec-btn" ion-button (click.stop)="selectSpec(dish)"
+                  *ngIf="!shopSer.isSimplCom(dish)">选规格</button>
+                <span class="num-badge  spu-num"
+                  *ngIf="appShopping.spuOfCarComMap[dish.id]&&appShopping.spuOfCarComMap[dish.id]>0">{{appShopping.spuOfCarComMap[dish.id]}}</span>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-label>
+        <!-- <ion-badge item-end color="main" class="ion-badge-bz" *ngIf="shopSer.isHave(dish)">已点
+      </ion-badge> -->
+      </button>
+
+      <div class="{{util.selectShowItemNum(configuration.DP_DPNUM)}}" *ngIf="configuration.DP_DP"
+        (click)="selectAddToCar(dish)" style="position:relative;">
+        <div class="slab-item-img">
+          <img [src]="dish.logoPath|imgUrl:'dish'">
+          <div class="slab-item-img-top">
+            <h2>{{dish.itemName}}</h2>
+            <div>
+              <span *ngIf="dish.minCount">{{dish.minCount?dish.minCount+'份起售':''}}
+                <br />
+              </span>
+              <span class="soldoutNum"
+                *ngIf="dish&&dish.soldoutStatus=='1'&&dish.soldoutNum">剩{{util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id])>0?util.accSub(dish.soldoutNum,appShopping.spuOfCarComMap[dish.id]):0}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="tips-left o" *ngIf="dish.measureFlag=='Z'">称</div>
+        <div class="tips o" *ngIf="dish.soldoutStatus=='1'&&dish.soldoutNum==0">沽</div>
+        <div class="slab-item-endbutton">
+          <ion-row justify-content-between align-items-center>
+            <ion-col col-6 no-padding align-items-center>
+              <span class="default-price">￥{{dish.tmpIsDefaultSku?.retailPrice}}</span>
+            </ion-col>
+            <ion-col col-6 no-padding text-right>
+              <button class="simper-btn " ion-button (click.stop)="selectSpec(dish)" *ngIf="shopSer.isSimplCom(dish)">
+                <ion-icon color="primary" name="add-circle" #addEle></ion-icon>
+              </button>
+              <button class="slab-spec-btn" ion-button (click.stop)="selectSpec(dish)"
+                *ngIf="!shopSer.isSimplCom(dish)">选规格
+              </button>
+              <span class="num-badge  spu-num"
+                *ngIf="appShopping.spuOfCarComMap[dish.id]&&appShopping.spuOfCarComMap[dish.id]>0">{{appShopping.spuOfCarComMap[dish.id]}}</span>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ng-container>
+  </ion-list>
+  <ion-label style="color: #999999;width: 100%;" text-center> 没有更多数据 </ion-label>
+</ion-content>
+
+<ion-footer *ngIf="!showShopInfo">
+  <wo-cart-tab #carTab (hangOrder)="toHangOrder()" (stayHangOrder)="stayEntryOrders()" (openModal)="openCartModal()"
+    (placeOrder)="placeOrder()" (addItemOfOrder)="addItemOfOrder()">
+  </wo-cart-tab>
+</ion-footer>

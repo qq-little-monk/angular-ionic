@@ -1,0 +1,50 @@
+<ion-header>
+    <p class="payWayStyle">{{payName}}支付</p>
+</ion-header>
+<ion-content>
+    <ion-grid  style="margin-top: 30px">
+        <ion-row>
+            <ion-col col-3 class="textCenter">
+                <label for="#moneyNum" class="labelStyle">金&nbsp;&nbsp;额</label>
+            </ion-col>
+            <ion-col col-9>
+                <input type="text" [value]="payNumValue" id="moneyNum" class="qrCodeStyle" autocomplete="off" disabled/>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-3 class="textCenter">
+                <label for="#qrCodePay" class="labelStyle">二维码</label>
+            </ion-col>
+            <ion-col col-9>
+                <input type="number" id="qrCodePay" class="qrCodeStyle colors" [(ngModel)]="qrCodeValue" autocomplete="off" disabled/>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="btns">
+                <button *ngIf="btnSwitch" full ion-button calss="btns" color="danger" (click)="mandatoryPay()">强制完成</button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="btns">
+                <button *ngIf="btnSwitch" full ion-button calss="btns" color="danger" (click)="lookSingle()">调单</button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="btns">
+                <button full ion-button calss="btns" color="light" (click)="cancelPay()">取消</button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="btns">
+                <button *ngIf="enSure" full ion-button calss="btns" color="danger" (click)="okPay()">确定</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>
+<div style="height: 100%;">
+    <custom-popup [qrCode]="qrCodeValue" (noAppear)="cancels($event)" *ngIf="isAppear" (toParent)="according($event)"></custom-popup>
+</div>

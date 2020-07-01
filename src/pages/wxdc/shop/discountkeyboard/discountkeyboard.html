@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item class="header-item" no-lines>
+      <span class="text-size-2 ">原单价:￥{{priceMap?.price}}</span>
+      <span class="text-size-2 " *ngIf="priceMap.unDiscountPrice>0">不可优惠金额:￥{{priceMap.unDiscountPrice}}</span><br>
+    </ion-item>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="close()">
+        <ion-icon name="woguanbi" class="font-18"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+
+  <!-- <ion-segment [(ngModel)]="campaignType" color="bluel" class="ion-segment" mode="ios">
+    <ion-segment-button value="3" class="text-size">
+      折扣
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      改价
+    </ion-segment-button>
+  </ion-segment> -->
+
+</ion-header>
+<ion-content>
+  <div style="height: 30%;">
+    <ion-item style="height: 100%;padding-top: 0%" class="keyboard-header" no-lines>
+      <ion-row class="row">
+        <ion-col tappable col-50 class='jz-center' (click)="changer('4')">
+          <!-- <button class='row-button'> -->
+          <h4 class="top-span">{{campaignType=='3'? '折后价':'改价'}}</h4><br>
+          <span class="font-28">￥</span>
+          <span class="font-number text-color-4" *ngIf="campaignType=='3'">{{this.doDisCount()|number:'1.0-2'}}</span>
+          <span class="font-number text-color-4" *ngIf="campaignType=='4'"
+            [ngClass]="{'btn-selected': campaignType=='4','btn-foucouce': price.isClear}">{{price.number|number:'1.0-2'}}</span>
+          <!-- </button> -->
+        </ion-col>
+        <i class="border-right"></i>
+        <ion-col tappable col-50 class='jz-center' (click)="changer('3')">
+          <h4 class="top-span">折扣</h4><br>
+          <span class="font-number text-color-5" *ngIf="campaignType=='3'"
+            [ngClass]="{'btn-selected': campaignType=='3','btn-foucouce': discount.isClear}">{{discount.number|number:'1.0-2'}}</span>
+          <span class="font-number text-color-5"
+            *ngIf="campaignType=='4'">{{this.doChargeMoney()|number:'1.0-2'}}</span>
+          <span>%</span>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+  <div style="height: 70%;" *ngIf="campaignType=='3'">
+    <number-keyboard [number]="discount" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+  <div style="height: 70%;" *ngIf="campaignType=='4'">
+    <number-keyboard [number]="price" [isClear]='true' (confirm)="confirm()"></number-keyboard>
+  </div>
+
+</ion-content>

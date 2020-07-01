@@ -1,0 +1,7 @@
+{
+  "name": "cashier",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

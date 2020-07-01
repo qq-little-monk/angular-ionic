@@ -1,0 +1,54 @@
+page-payMentkeyboard {
+    .content-ios,
+    .scroll-content {
+      background-color: #ffffff;
+
+    }
+    .scroll-content {
+      background: #efefef;
+    }
+.header-item{
+  span {
+    color: #BBBBBB!important;
+  }
+}
+.keyboard-header{
+  padding: r(0px) r(30px) r(0px) r(30px);
+  // margin: r(0px) r(30px) r(0px) r(30px);
+  border: 1px solid #E5E5E5;
+  height: 30%;
+  text-align: center;
+  span {
+    text-align: center;
+    padding: r(10px) r(10px) r(10px) r(10px);
+    font-size: r(50px);
+    // color: #BBBBBB!important;
+  }
+  .item {
+    padding-left: 0;
+}
+}
+.btn-selected{
+  padding-top: r(10px);
+  color: red;
+
+}
+.btn-foucouce{
+  background-color: rgb(198, 214, 248)!important;
+}
+.budget-row{
+margin: r(0px) r(30px) r(0px) r(30px);
+}
+.budget{
+  padding: r(10px) r(30px) r(10px) r(30px);
+  // background: greenyellow;
+  background:#dedede;
+  width: 100%;
+  height: 100%;
+  color: #000000;
+ 
+  .button-inner{
+    font-size: r(38px)!important;
+  }
+}
+}

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>会员中心</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="searchBox">
+    <ion-searchbar (click)="goToSearch()"></ion-searchbar>
+  </div>
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <p>会员卡号：{{customerObj.custCode}}</p>
+        <p>会员名称：{{customerObj.custName}}</p>
+        <p>可用余额：{{customerObj.ttlRecharge}}</p>
+        <p>会员积分：{{customerObj.ttlPoints}}</p>
+        <p>优惠类型：{{customerObj.discountTypeName}}</p>
+        <p>会员级别：{{customerObj.gradeName}}</p>
+      </ion-card-header>
+      <ion-card-content>
+        <button ion-button (click)="customeRecharger($event)">会员充值</button>
+        <button ion-button (click)="customerInfo($event)">修改信息</button>
+        <button ion-button (click)="customerPassword($event)">修改密码</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-list class="payMent" *ngIf="isPay">
+    <ion-list-header>
+      充值方式
+    </ion-list-header>
+    <ion-row>
+      <ion-col col-4 *ngFor="let payMent of payMentArray">
+        <button ion-button clear class="" (click)="goToPay(payMent)" [disabled]="payMent.disabled"
+          [ngClass]="{'btn-selected': payMent.disabled}">
+          {{payMent.payName}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="btns">
+        <button full ion-button calss="btns" (click)="goTonewAddCustomer()">新增会员</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,59 @@
+<!--
+  Generated template for the PrinterKtListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border="">
+
+  <ion-navbar text-center="" mode="ios">
+    <ion-title>厨房打印机</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list *ngIf="deviceList.length > 0; else tmpl">
+    <button ion-item="" *ngFor="let item of deviceList" (click)="edit(item)">
+      <h2>{{item['name']}}</h2>
+      <p>{{item['address']}}</p>
+      <ion-note item-end>
+        <div *ngIf="item.connectStatus; else elseBlock">
+          <span style="color: #36AC74;font-size: 15px;">连接正常</span>
+        </div>
+        <ng-template #elseBlock>
+          <span style="color: #DD0404;font-size: 15px;">连接断开</span>
+        </ng-template>
+      </ion-note>
+    </button>
+  </ion-list>
+
+  <ng-template #tmpl>
+    <div class="no-detail">
+      <img src="assets/imgs/order/auto-deal.png" width="22%">
+      <p>暂无配置</p>
+    </div>
+  </ng-template>
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-row>
+    <ion-col no-padding="">
+      <button ion-button="" full no-margin="" color="white" (click)="update()">
+        更新配置
+      </button>
+    </ion-col>
+
+    <ion-col no-padding="">
+      <button ion-button="" full no-margin="" color="main" (click)="add()">
+        添加厨打
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

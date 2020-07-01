@@ -1,0 +1,27 @@
+<!-- <ion-content> -->
+  <!-- <div id="detailMask" class="show" (click)="close()"></div> -->
+  <div class="container-bg">
+    <div class="container">
+      <!-- <ion-scroll scrollY='true'> -->
+        <div class="img-box" (tap)="tap($event)">
+          <img [src]="dish.logoPath | imgUrl: 'dish'">
+        </div>
+        <!-- <ion-list class="ion-padding">
+          <div class="flex ion-align-items-center ion-justify-content-between ion-margin-bottom">
+            <span class="lage-price">
+              <span class="symbol">￥</span>
+              {{dish.price}}
+            </span>
+            <order-btn [(ngModel)]="dish.sales" (add)="addCart($event)" (sub)='subCart($event)'>
+            </order-btn>
+          </div>
+          <h2>{{dish.name}}</h2>
+        </ion-list> -->
+
+      <!-- </ion-scroll> -->
+    </div>
+  </div>
+  <!-- <ion-footer>
+    <wo-cart-tab #carTab (openModal)="openCartModal()" (placeOrder)="placeOrder()"></wo-cart-tab>
+  </ion-footer>
+</ion-content> -->

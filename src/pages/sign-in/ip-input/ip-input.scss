@@ -1,0 +1,61 @@
+page-ip-input {
+    .content-ios,
+    .scroll-content {
+      background-color: #ffffff;
+
+    }
+    .scroll-content {
+      background: #efefef;
+    }
+.header-item{
+  
+  span {
+    color: #BBBBBB!important;
+  }
+}
+.row-button{
+  background: #ffffff;
+  width: 100%;
+}
+.btn-selected{
+  padding-top: r(10px);
+  color: red;
+  border: 1px solid red;
+}
+.btn-foucouce{
+  background: rgb(198, 214, 248)!important;
+}
+.ion-segment{
+  position: absolute;
+  background: #fff;
+  top: r(48px);
+  height: 20px;
+}
+.segment-ios .segment-button {
+  font-size: r(28px);
+}
+.top-span{
+  position: absolute;
+  left: r(20px);
+  color: #BBBBBB!important;
+  padding-bottom: r(20px)!important;
+  margin-bottom: r(20px)!important;
+  font-size: r(28px)!important;
+}
+.adress{
+  border: 1px solid #999999;
+  margin: r(10px) r(10px) r(10px) r(10px);
+  // padding: r(10px);
+  border-radius: r(5px);
+  text-align: center;
+  font-size: r(38px);
+  border:1px solid red;
+  background-color:transparent;
+  border-color: #979797;
+  height: r(90px);
+}
+.point{
+  font-size:  r(50px);
+}
+
+}

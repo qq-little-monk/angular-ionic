@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center> {{top?.title}}</ion-title>
+    <!-- {{tab?.tableName}}
+    <span *ngIf="teaAmt.number*man.number>0">（总茶位费：￥{{utilProvider.accMul(teaAmt.number,man.number)}}）</span> -->
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div style="height: 20%;background-color: #FFF;">
+    <ion-row class="jz-center">
+      <div col-10 tappable class="keyboard-header jz-center" (click)="foucouce(2)">
+        <span class="font-size16"> {{top?.placeholder}}</span>
+        <span class="jz-center"
+          [ngClass]="{'btn-foucouce':number.isClear,'btn-selected': number.selected}">{{getShowNumber()}}</span>
+      </div>
+    </ion-row>
+  </div>
+  <div style="height: 80%;">
+    <number-keyboard [number]="number" [isClear]='true' (confirm)="confirm()" [maxLength]='maxLength'
+      [havePoint]='havePoint'></number-keyboard>
+  </div>
+</ion-content>

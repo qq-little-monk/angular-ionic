@@ -1,0 +1,137 @@
+<!--
+  Generated template for the PrinterDevicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar mode="ios">
+    <ion-title text-center>设备管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <button ion-item (click)="editReceiptPrinter()">
+      <h2>小票打印机</h2>
+      <p>
+        {{printProvider.receiptPrinter.name||printProvider.receiptPrinter.address || '未设置'}}
+      </p>
+      <ion-note item-end *ngIf="printProvider.receiptPrinter.address">
+        <div *ngIf="bluetoothOpenFlag&&orderProvider.receiptPrintStatus">
+          <span style="color: #36AC74;font-size: 13px;">连接正常</span>
+        </div>
+        <div *ngIf="bluetoothOpenFlag&&!orderProvider.receiptPrintStatus">
+          <span style="color: #36AC74;font-size: 13px;">连接断开</span>
+        </div>
+        <div *ngIf="!bluetoothOpenFlag">
+          <span style="color: #36AC74;font-size: 13px;">蓝牙断开</span>
+        </div>
+        <!-- <ng-template #elseBlock>
+          <span style="color: #DD0404;font-size: 13px;">连接断开</span>
+        </ng-template> -->
+        <!-- {{isBluetoothOpen()}} -->
+      </ion-note>
+    </button>
+
+    <!-- <button ion-item (click)="editKichentPrinter()">
+      <h2>厨房打印机</h2>
+      <p>
+        已配置数量: {{ktPrints.length}}
+      </p>
+      <ion-note item-end>
+        <div *ngIf="kichentStatus==0">
+          <span style="color: #DD0404;font-size: 13px;">连接断开</span>
+        </div>
+        <div *ngIf="kichentStatus==1">
+          <span style="color: #DD0404;font-size: 13px;">连接异常</span>
+        </div>
+        <div *ngIf="kichentStatus==2">
+          <span style="color: #36AC74;font-size: 13px;">连接正常</span>
+        </div>
+      </ion-note>
+    </button>
+
+    <button ion-item (click)="editTagPrinter()">
+      <h2>标签打印机</h2>
+      <p>
+        {{printProvider.tagPrinter.name||printProvider.tagPrinter.address || '未设置'}}
+      </p>
+      <ion-note item-end *ngIf="printProvider.tagPrinter.address">
+        <div *ngIf="orderProvider.tagPrintStatus; else elseBlock">
+          <span style="color: #36AC74;font-size: 13px;">连接正常</span>
+        </div>
+        <ng-template #elseBlock>
+          <span style="color: #DD0404;font-size: 13px;">连接断开</span>
+        </ng-template>
+      </ion-note>
+    </button> -->
+    <!--<button ion-item (click)="editTablePrinter()">-->
+    <!--<h2>台单打印机</h2>-->
+    <!--<p>-->
+    <!--{{printProvider.tablePrinter.address || '未设置'}}-->
+    <!--</p>-->
+    <!--</button>-->
+    <!--<button ion-item (click)="editImgPrinter()">
+      <h2>图片打印机</h2>
+      <p>
+        {{printProvider.imgPrinter.address || '未设置'}}
+      </p>
+    </button>-->
+  </ion-list>
+
+  <!-- <ion-list>
+    <ion-list-header>
+      打印单据设置
+      <ion-list-header>
+
+  </ion-list> -->
+  <ion-list class="payMent">
+    <ion-list-header style="font-weight:bold">
+      打印单据设置
+    </ion-list-header>
+    <ion-item>
+      <ion-label>打印顾客单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_GKD" (ionChange)="toggleFun('DY_GKD')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>打印台单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_TD" (ionChange)="toggleFun('DY_TD')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>打印预结单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_YJD" (ionChange)="toggleFun('DY_YJD')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>打印结账单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_JZD" (ionChange)="toggleFun('DY_JZD')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>打印加菜单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_JCD" (ionChange)="toggleFun('DY_JCD')"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>打印退菜单</ion-label>
+      <ion-toggle [(ngModel)]="Configuration.DY_TCD" (ionChange)="toggleFun('DY_TCD')"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="payMent">
+    <ion-list-header style="font-weight:bold">
+      字体设置
+    </ion-list-header>
+    <ion-item>
+      <ion-label>品名字体</ion-label>
+      <ion-select [(ngModel)]="Configuration.DY_SPMS" (ionChange)="fontSize('DY_SPMS')" multiple="fales" okText="确定"
+        cancelText="取消">
+        <ion-option [value]="2">大</ion-option>
+        <ion-option [value]="1">中</ion-option>
+        <ion-option [value]="0">小</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
